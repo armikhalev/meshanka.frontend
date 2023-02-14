@@ -168,6 +168,7 @@
          [:hr]
          (when (not (str/blank? @!v))
            [:div
+            [:div.box.has-text-centered "Verb type: "  [:span.tag (-> props :verb-type name)]]
             [:div
              [:h4 "Infinitiv"]
              [:div.block
@@ -175,8 +176,7 @@
               [:div (imperfective-infinitive props)]]
              [:div.block
               [:h6 "Soveršeni Vid / Perfective Aspect"]
-              [:div (perfective-infinitive props)]]
-             ]
+              [:div (perfective-infinitive props)]]]
             [:hr]
             [present-tense props]
             [:hr]
