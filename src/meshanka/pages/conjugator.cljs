@@ -43,48 +43,56 @@
       (str past-perf "t"))))
 
 (defn present-tense
-  [{:keys [base but-type? verb]}]
-  [:div#present-tense.block
-   [:h4 "Nastoječi čas / Present tense"]
-   [:div.present-tense
-    [:table.present-tense-table
-     [:thead
-      [:tr
-       [:th ""]
-       [:th "Jedinistveni lik / Singular "]
-       [:th ""]
-       [:th "Množistveni lik / Plural"]]]
-     [:tbody
-      [:tr.person1
-       [:td "ja"]
-       [:td (if but-type? "jesim, sim, je" (str base "m"))]
-       [:td "mi"]
-       [:td (if but-type? "jesmó, smo, je" (str base "mo"))]]
-      [:tr.person2
-       [:td "ti"]
-       [:td (if but-type? "jesí, si, je" (str base "š"))]
-       [:td "vi"]
-       [:td (if but-type? "jesté, ste, je" (str base "te"))]]
-      [:tr.person3
-       [:td "on"]
-       [:td (if but-type? "jest, je" verb)]
-       [:td "oni"]
-       [:td (if but-type? "jesó, so, je" (str base "jo"))]]]]]])
+  [{:keys [base verb verb-type]}]
+  (let [but-type? (= :but verb-type)]
+    [:div#present-tense.block
+     [:h4 "Nastoječi čas / Present tense"]
+     [:div.present-tense
+      [:table.present-tense-table
+       [:thead
+        [:tr
+         [:th ""]
+         [:th "Jedinistveni lik / Singular "]
+         [:th ""]
+         [:th "Množistveni lik / Plural"]]]
+       [:tbody
+        [:tr.person1
+         [:td "ja"]
+         [:td (if but-type? "jesim, sim, je" (str base "m"))]
+         [:td "mi"]
+         [:td (if but-type? "jesmó, smo, je" (str base "mo"))]]
+        [:tr.person2
+         [:td "ti"]
+         [:td (if but-type? "jesí, si, je" (str base "š"))]
+         [:td "vi"]
+         [:td (if but-type? "jesté, ste, je" (str base "te"))]]
+        [:tr.person3
+         [:td "on"]
+         [:td (if but-type? "jest, je" verb)]
+         [:td "oni"]
+         [:td (if but-type? "jesó, so, je" (str base "jo"))]]]]]]))
 
 (defn past-imperfective
   [{:keys [base verb-type]}]
   ;; if -va don't need to add it, otherwise just add -va
   (let [root (if (= verb-type :va)(.slice base 0 -2)(.slice base 0 -1))
         ending (if (= verb-type :va)(.slice root -1)(.slice base -1))
-        stressed-vowel (case ending "a" "á" "e" "é" "u" "ú" "o" "ó" "i" "í" ending)]
+        stressed-vowel (case ending
+                         "a" "á"
+                         "e" "é"
+                         "u" "ú"
+                         "o" "ó"
+                         "i" "í"
+                         ending)]
     (case  verb-type
       :but "buva"
       :va  (str (.slice root 0 -1) stressed-vowel "va")
       (str root stressed-vowel "va"))))
 
 (defn future-imperfective
-  [{:keys [verb-type base but-type?] :as props}]
-  (let [perf-inf (imperfective-infinitive props)]
+  [{:keys [verb-type base] :as props}]
+  (let [perf-inf  (imperfective-infinitive props)
+        but-type? (= :but verb-type)]
     [:div.block
      [:table.present-tense-table
       [:thead
@@ -146,8 +154,7 @@
         exception-ending (case verb-type :je "je" :ji "ji" :ova "je" :va "je" nil)]
     {:base      (if exception-ending (first (str/split v3person-sg exception-ending)) v3person-sg)
      :verb      v3person-sg
-     :verb-type verb-type
-     :but-type? (= :but verb-type)}))
+     :verb-type verb-type}))
 
 ;; MAIN ;;
 
