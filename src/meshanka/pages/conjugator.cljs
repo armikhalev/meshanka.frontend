@@ -168,7 +168,8 @@
          [:hr]
          (when (not (str/blank? @!v))
            [:div
-            [:div.box.has-text-centered "Verb type: "  [:span.tag (-> props :verb-type name)]]
+            [:div.box.has-text-centered
+             [:span "Verb type: "] [:span.tag (:verb-type  props)]]
             [:div
              [:h4 "Infinitiv"]
              [:div.block
