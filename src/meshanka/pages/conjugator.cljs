@@ -21,7 +21,7 @@
       :ja     (str stem "í")
       :ga->že (str stem "žé")
       :ka->če (str stem "čé")
-      :xa->še (str stem "šé")
+      :ha->še (str stem "šé")
       :ša->si (str stem "sí")
       (str root stressed-vowel))))
 
@@ -136,7 +136,7 @@
       "ja"    :ja
       "ga"    :ga->že
       "ka"    :ka->če
-      "xa"    :xa->še
+      "ha"    :ha->še
       "ša"    :ša->si
       "e"     :e
       "i"     :i
@@ -208,7 +208,7 @@
 ;;             :ja
 ;;             :ga->že
 ;;             :ka->če
-;;             :xa->še
+;;             :ha->še
 ;;             :e
 ;;             :i
 ;;             :a
