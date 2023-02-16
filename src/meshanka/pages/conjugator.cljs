@@ -37,9 +37,9 @@
   [{:keys [verb-type base] :as props}]
   (let [past-perf (past-perfective props)]
     (case  verb-type
-      :iti   "iti"
+      :iti   "ití"
       :but   "but"
-      :mogči "mogči"
+      :mogči "mogčí"
       (str past-perf "t"))))
 
 (defn present-tense
