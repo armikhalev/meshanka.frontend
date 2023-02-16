@@ -45,32 +45,41 @@
 (defn present-tense
   [{:keys [base verb verb-type]}]
   (let [but-type? (= :but verb-type)]
-    [:div#present-tense.block
-     [:h4 "Nastoječi čas / Present tense"]
-     [:div.present-tense
-      [:table.present-tense-table
-       [:thead
-        [:tr
-         [:th ""]
-         [:th "Jedinistveni lik / Singular "]
-         [:th ""]
-         [:th "Množistveni lik / Plural"]]]
-       [:tbody
-        [:tr.person1
-         [:td "ja"]
-         [:td (if but-type? "jesim, sim, je" (str base "m"))]
-         [:td "mi"]
-         [:td (if but-type? "jesmó, smo, je" (str base "mo"))]]
-        [:tr.person2
-         [:td "ti"]
-         [:td (if but-type? "jesí, si, je" (str base "š"))]
-         [:td "vi"]
-         [:td (if but-type? "jesté, ste, je" (str base "te"))]]
-        [:tr.person3
-         [:td "on"]
-         [:td (if but-type? "jest, je" verb)]
-         [:td "oni"]
-         [:td (if but-type? "jesó, so, je" (str base "jo"))]]]]]]))
+    {:ja  (if but-type? "jesim, sim, je" (str base "m"))
+     :mi  (if but-type? "jesmó, smo, je" (str base "mo"))
+     :ti  (if but-type? "jesí, si, je" (str base "š"))
+     :vi  (if but-type? "jesté, ste, je" (str base "te"))
+     :on  (if but-type? "jest, je" verb)
+     :oni (if but-type? "jesó, so, je" (str base "jo"))}))
+
+(defn present-tense-view
+  [props]
+  [:div#present-tense.block
+   [:h4 "Nastoječi čas / Present tense"]
+   [:div.present-tense
+    [:table.present-tense-table
+     [:thead
+      [:tr
+       [:th ""]
+       [:th "Jedinistveni lik / Singular "]
+       [:th ""]
+       [:th "Množistveni lik / Plural"]]]
+     [:tbody
+      [:tr.person1
+       [:td "ja"]
+       [:td (-> props present-tense :ja)]
+       [:td "mi"]
+       [:td (-> props present-tense :mi)]]
+      [:tr.person2
+       [:td "ti"]
+       [:td (-> props present-tense :ti)]
+       [:td "vi"]
+       [:td (-> props present-tense :vi)]]
+      [:tr.person3
+       [:td "on"]
+       [:td (-> props present-tense :on)]
+       [:td "oni"]
+       [:td (-> props present-tense :oni)]]]]]])
 
 (defn past-imperfective
   [{:keys [base verb-type]}]
@@ -179,7 +188,7 @@
               [:h6 "Soveršeni Vid / Perfective Aspect"]
               [:div (perfective-infinitive props)]]]
             [:hr]
-            [present-tense props]
+            [present-tense-view props]
             [:hr]
             [:div
              [:h4 "Past tense"]
