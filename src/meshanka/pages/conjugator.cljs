@@ -99,34 +99,42 @@
       (str root stressed-vowel "va"))))
 
 (defn future-imperfective
-  [{:keys [verb-type base] :as props}]
+  [{:keys [verb-type] :as props}]
   (let [perf-inf  (imperfective-infinitive props)
         but-type? (= :but verb-type)]
-    [:div.block
-     [:table.present-tense-table
-      [:thead
-       [:tr
-        [:th ""]
-        [:th "Jedinistveni lik / Singular "]
-        [:th ""]
-        [:th "Množistveni lik / Plural"]]]
-      [:tbody
-       [:tr.person1
-        [:td "ja"]
-        [:td (if but-type? "budem" (str "bum " perf-inf))]
-        [:td "mi"]
-        [:td (if but-type? "budemo" (str "bumo " perf-inf))]]
-       [:tr.person2
-        [:td "ti"]
-        [:td (if but-type? "budeš" (str "buš " perf-inf))]
-        [:td "vi"]
-        [:td (if but-type? "budete" (str "buste " perf-inf))]]
-       [:tr.person3
-        [:td "on"]
-        [:td (if but-type? "bude" (str "bude " perf-inf))]
-        [:td "oni"]
-        [:td (if but-type? "budejo" (str "bujo " perf-inf))]]]]])
-  )
+    {:ja  (if but-type? "budem" (str "bum " perf-inf))
+     :mi  (if but-type? "budemo" (str "bumo " perf-inf))
+     :ti  (if but-type? "budeš" (str "buš " perf-inf))
+     :vi  (if but-type? "budete" (str "buste " perf-inf))
+     :on  (if but-type? "bude" (str "bude " perf-inf))
+     :oni (if but-type? "budejo" (str "bujo " perf-inf))}))
+
+(defn future-imperfective-view
+  [props]
+  [:div.block
+   [:table.present-tense-table
+    [:thead
+     [:tr
+      [:th ""]
+      [:th "Jedinistveni lik / Singular "]
+      [:th ""]
+      [:th "Množistveni lik / Plural"]]]
+    [:tbody
+     [:tr.person1
+      [:td "ja"]
+      [:td (-> props future-imperfective :ja)]
+      [:td "mi"]
+      [:td (-> props future-imperfective :mi)]]
+     [:tr.person2
+      [:td "ti"]
+      [:td (-> props future-imperfective :ti)]
+      [:td "vi"]
+      [:td (-> props future-imperfective :vi)]]
+     [:tr.person3
+      [:td "on"]
+      [:td (-> props future-imperfective :on)]
+      [:td "oni"]
+      [:td (-> props future-imperfective :oni)]]]]])
 
 ;; LOGIC ;;
 
@@ -202,9 +210,7 @@
             [:div
              [:h4 "Future tense"]
              [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-             [future-imperfective props]
-             ]])
-         ]))))
+             [future-imperfective-view props]]])]))))
 
 ;; person3sg (case verb-type
 ;;             :iti   "ide"
