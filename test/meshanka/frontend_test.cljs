@@ -47,7 +47,7 @@
                               :verb-type :ova}
                   :present   {:ja "polzovam", :mi "polzovamo", :ti "polzovaš", :vi "polzovate", :on "polzovaje", :oni "polzovajo"}
                   :fut-impf  {:ja "bum polzovat", :mi "bumo polzovat", :ti "buš polzovat", :vi "buste polzovat", :on "bude polzovat", :oni "bujo polzovat"}
-                  :inf-pf    "polzovát"
+                  :inf-pf    "polzováti"
                   :inf-impf  "polzovat"
                   :past-pf   "polzová"
                   :past-impf "polzováva"}
@@ -58,7 +58,7 @@
                               :verb-type :va}
                   :present   {:ja "ukrivam", :mi "ukrivamo", :ti "ukrivaš", :vi "ukrivate", :on "ukrivaje", :oni "ukrivajo"}
                   :fut-impf  {:ja "bum ukrivat", :mi "bumo ukrivat", :ti "buš ukrivat", :vi "buste ukrivat", :on "bude ukrivat", :oni "bujo ukrivat"}
-                  :inf-pf    "ukrít"
+                  :inf-pf    "ukríti"
                   :inf-impf  "ukrivat"
                   :past-pf   "ukrí"
                   :past-impf "ukríva"}
@@ -69,7 +69,7 @@
                               :verb-type :ji}
                   :present   {:ja "kusam", :mi "kusamo", :ti "kusaš", :vi "kusate", :on "kusaji", :oni "kusajo"}
                   :fut-impf  {:ja "bum kusat", :mi "bumo kusat", :ti "buš kusat", :vi "buste kusat", :on "bude kusat", :oni "bujo kusat"}
-                  :inf-pf    "kusít"
+                  :inf-pf    "kusíti"
                   :inf-impf  "kusat"
                   :past-pf   "kusí"
                   :past-impf "kusáva"}
@@ -80,7 +80,7 @@
                               :verb-type :je}
                   :present   {:ja "stiram", :mi "stiramo", :ti "stiraš", :vi "stirate", :on "stiraje", :oni "stirajo"}
                   :fut-impf  {:ja "bum stirat", :mi "bumo stirat", :ti "buš stirat", :vi "buste stirat", :on "bude stirat", :oni "bujo stirat"}
-                  :inf-pf    "stirét"
+                  :inf-pf    "stiréti"
                   :inf-impf  "stirat"
                   :past-pf   "stiré"
                   :past-impf "stiráva"}
@@ -91,7 +91,7 @@
                               :verb-type :ja}
                   :present   {:ja "kupjam", :mi "kupjamo", :ti "kupjaš", :vi "kupjate", :on "kupja", :oni "kupjajo"}
                   :fut-impf  {:ja "bum kupjat", :mi "bumo kupjat", :ti "buš kupjat", :vi "buste kupjat", :on "bude kupjat", :oni "bujo kupjat"}
-                  :inf-pf    "kupít"
+                  :inf-pf    "kupíti"
                   :inf-impf  "kupjat"
                   :past-pf   "kupí"
                   :past-impf "kupjáva"}
@@ -102,7 +102,7 @@
                               :verb-type :ga->že}
                   :present   {:ja "pomogam", :mi "pomogamo", :ti "pomogaš", :vi "pomogate", :on "pomoga", :oni "pomogajo"}
                   :fut-impf  {:ja "bum pomogat", :mi "bumo pomogat", :ti "buš pomogat", :vi "buste pomogat", :on "bude pomogat", :oni "bujo pomogat"}
-                  :inf-pf    "pomožét"
+                  :inf-pf    "pomožéti"
                   :inf-impf  "pomogat"
                   :past-pf   "pomožé"
                   :past-impf "pomogáva"}
@@ -113,7 +113,7 @@
                               :verb-type :ka->če}
                   :present   {:ja "iskam", :mi "iskamo", :ti "iskaš", :vi "iskate", :on "iska", :oni "iskajo"}
                   :fut-impf  {:ja "bum iskat", :mi "bumo iskat", :ti "buš iskat", :vi "buste iskat", :on "bude iskat", :oni "bujo iskat"}
-                  :inf-pf    "isčét"
+                  :inf-pf    "isčéti"
                   :inf-impf  "iskat"
                   :past-pf   "isčé"
                   :past-impf "iskáva"}
@@ -124,7 +124,7 @@
                               :verb-type :ha->še}
                   :present   {:ja "sluham", :mi "sluhamo", :ti "sluhaš", :vi "sluhate", :on "sluha", :oni "sluhajo"}
                   :fut-impf  {:ja "bum sluhat", :mi "bumo sluhat", :ti "buš sluhat", :vi "buste sluhat", :on "bude sluhat", :oni "bujo sluhat"}
-                  :inf-pf    "slušét"
+                  :inf-pf    "slušéti"
                   :inf-impf  "sluhat"
                   :past-pf   "slušé"
                   :past-impf "sluháva"}
@@ -135,7 +135,7 @@
                               :verb-type :ša->si}
                   :present   {:ja "vešam", :mi "vešamo", :ti "vešaš", :vi "vešate", :on "veša", :oni "vešajo"}
                   :fut-impf  {:ja "bum vešat", :mi "bumo vešat", :ti "buš vešat", :vi "buste vešat", :on "bude vešat", :oni "bujo vešat"}
-                  :inf-pf    "vesít"
+                  :inf-pf    "vesíti"
                   :inf-impf  "vešat"
                   :past-pf   "vesí"
                   :past-impf "vešáva"}
@@ -146,7 +146,7 @@
                               :verb-type :e}
                   :present   {:ja "videm", :mi "videmo", :ti "videš", :vi "videte", :on "vide", :oni "videjo"}
                   :fut-impf  {:ja "bum videt", :mi "bumo videt", :ti "buš videt", :vi "buste videt", :on "bude videt", :oni "bujo videt"}
-                  :inf-pf    "vidét"
+                  :inf-pf    "vidéti"
                   :inf-impf  "videt"
                   :past-pf   "vidé"
                   :past-impf "vidéva"}
@@ -157,7 +157,7 @@
                               :verb-type :i}
                   :present   {:ja "ljubim", :mi "ljubimo", :ti "ljubiš", :vi "ljubite", :on "ljubi", :oni "ljubijo"}
                   :fut-impf  {:ja "bum ljubit", :mi "bumo ljubit", :ti "buš ljubit", :vi "buste ljubit", :on "bude ljubit", :oni "bujo ljubit"}
-                  :inf-pf    "ljubít"
+                  :inf-pf    "ljubíti"
                   :inf-impf  "ljubit"
                   :past-pf   "ljubí"
                   :past-impf "ljubíva"}
@@ -168,7 +168,7 @@
                               :verb-type :a}
                   :present   {:ja "pametam", :mi "pametamo", :ti "pametaš", :vi "pametate", :on "pameta", :oni "pametajo"}
                   :fut-impf  {:ja "bum pametat", :mi "bumo pametat", :ti "buš pametat", :vi "buste pametat", :on "bude pametat", :oni "bujo pametat"}
-                  :inf-pf    "pametát"
+                  :inf-pf    "pametáti"
                   :inf-impf  "pametat"
                   :past-pf   "pametá"
                   :past-impf "pametáva"}])

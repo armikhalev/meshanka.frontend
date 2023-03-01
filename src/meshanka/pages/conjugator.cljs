@@ -40,7 +40,7 @@
       :iti   "ití"
       :but   "but"
       :mogči "mogčí"
-      (str past-perf "t"))))
+      (str past-perf "ti"))))
 
 (defn present-tense
   [{:keys [base verb verb-type]}]
