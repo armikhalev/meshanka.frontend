@@ -7,23 +7,23 @@
    [goog.string :as gstr]))
 
 (defn past-perfective
-  [{:keys [base verb-type]}]
+  [{:keys [base prefix verb-type]}]
   (let [root (if (= verb-type :va)(.slice base 0 -2)(.slice base 0 -1))
         ending (if (= verb-type :va)(.slice root -1)(.slice base -1))
         stressed-vowel (case ending "a" "á" "e" "é" "u" "ú" "o" "ó" "i" "í" ending)
         stem (.slice root 0 -1)]
     (case  verb-type
-      :iti    "šed"
+      :iti    (str prefix "šed")
       :but    "be"
-      :va     (str stem stressed-vowel)
-      :ji     (str root "í")
-      :je     (str root "é")
-      :ja     (str stem "í")
-      :ga->že (str stem "žé")
-      :ka->če (str stem "čé")
-      :ha->še (str stem "šé")
-      :ša->si (str stem "sí")
-      (str root stressed-vowel))))
+      :va     (str prefix stem stressed-vowel)
+      :ji     (str prefix root "í")
+      :je     (str prefix root "é")
+      :ja     (str prefix stem "í")
+      :ga->že (str prefix stem "žé")
+      :ka->če (str prefix stem "čé")
+      :ha->še (str prefix stem "šé")
+      :ša->si (str prefix stem "sí")
+      (str prefix root stressed-vowel))))
 
 (defn imperfective-infinitive
   [{:keys [verb-type base]}]
@@ -34,12 +34,12 @@
     (str base "t")))
 
 (defn perfective-infinitive
-  [{:keys [verb-type base] :as props}]
+  [{:keys [verb-type prefix base] :as props}]
   (let [past-perf (past-perfective props)]
     (case  verb-type
-      :iti   "ití"
+      :iti   "priití"
       :but   "but"
-      :mogči "mogčí"
+      :mogči "smogčí"
       (str past-perf "ti"))))
 
 (defn present-tense
@@ -98,6 +98,18 @@
       :va  (str (.slice root 0 -1) stressed-vowel "va")
       (str root stressed-vowel "va"))))
 
+(defn future-perfective
+  [{:keys [verb-type] :as props}]
+  (let [past-perf (past-perfective props)
+        but-type? (= :but verb-type)
+        iti-type? (= :iti verb-type)]
+    {:ja  (cond but-type? "budem"  iti-type? "ja če priidém"   :default (str "ja če " past-perf "m"))
+     :mi  (cond but-type? "budemo" iti-type? "mi če priidémo"  :default (str "mi če " past-perf "mo"))
+     :ti  (cond but-type? "budeš"  iti-type? "ti če priidéš"   :default (str "ti če " past-perf "š"))
+     :vi  (cond but-type? "budete" iti-type? "vi če priidéte"  :default (str "vi če " past-perf "te"))
+     :on  (cond but-type? "bude"   iti-type? "on če priidé"    :default (str "on če " past-perf))
+     :oni (cond but-type? "budejo" iti-type? "oni če priidéjo" :default (str "oni če " past-perf "jo"))}))
+
 (defn future-imperfective
   [{:keys [verb-type] :as props}]
   (let [perf-inf  (imperfective-infinitive props)
@@ -112,7 +124,7 @@
 (defn future-imperfective-view
   [props]
   [:div.block
-   [:table.present-tense-table
+   [:table.future-tense-imperfective-table
     [:thead
      [:tr
       [:th ""]
@@ -135,6 +147,33 @@
       [:td (-> props future-imperfective :on)]
       [:td "oni"]
       [:td (-> props future-imperfective :oni)]]]]])
+
+(defn future-perfective-view
+  [props]
+  [:div.block
+   [:table.future-tense-perfective-table
+    [:thead
+     [:tr
+      [:th ""]
+      [:th "Jedinistveni lik / Singular "]
+      [:th ""]
+      [:th "Množistveni lik / Plural"]]]
+    [:tbody
+     [:tr.person1
+      [:td "ja"]
+      [:td (-> props future-perfective :ja)]
+      [:td "mi"]
+      [:td (-> props future-perfective :mi)]]
+     [:tr.person2
+      [:td "ti"]
+      [:td (-> props future-perfective :ti)]
+      [:td "vi"]
+      [:td (-> props future-perfective :vi)]]
+     [:tr.person3
+      [:td "on"]
+      [:td (-> props future-perfective :on)]
+      [:td "oni"]
+      [:td (-> props future-perfective :oni)]]]]])
 
 ;; LOGIC ;;
 
@@ -166,17 +205,20 @@
             :on-change #(reset! v (-> % .-target .-value))}]])
 
 (defn prepare-verb-props [v]
-  (let [v3person-sg      (gstr/trim v)
-        verb-type        (find-verb-type (gstr/trim v3person-sg))
-        exception-ending (case verb-type :je "je" :ji "ji" :ova "je" :va "je" nil)]
-    {:base      (if exception-ending (first (str/split v3person-sg exception-ending)) v3person-sg)
-     :verb      v3person-sg
-     :verb-type verb-type}))
+  (let [v3person-sg          (gstr/trim v)
+        splitted-by-dash     (str/split v3person-sg #"-" 2)
+        [prefix verb]   (if (= (count splitted-by-dash) 2) splitted-by-dash [nil (first splitted-by-dash)])
+        verb-type            (find-verb-type (gstr/trim verb))
+        exception-ending     (case verb-type :je "je" :ji "ji" :ova "je" :va "je" nil)]
+    {:base        (if exception-ending (first (str/split verb exception-ending)) verb)
+     :prefix prefix
+     :verb        verb
+     :verb-type   verb-type}))
 
 ;; MAIN ;;
 
 (defn page []
-  (let [!v (r/atom "pisavaje")]
+  (let [!v (r/atom "na-pisavaje")]
     (fn []
       (let [props (prepare-verb-props @!v)]
         [:section.section>div.container>div.content
@@ -186,7 +228,8 @@
          (when (not (str/blank? @!v))
            [:div
             [:div.box.has-text-centered
-             [:span "Verb type: "] [:span.tag (:verb-type  props)]]
+             [:span "Verb type: "] [:span.tag (:verb-type  props)]
+             [:span "Prefix: "] [:span.tag (:prefix  props)]]
             [:div
              [:h4 "Infinitiv"]
              [:div.block
@@ -210,7 +253,10 @@
             [:div
              [:h4 "Future tense"]
              [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-             [future-imperfective-view props]]])]))))
+             [future-imperfective-view props]]
+            [:div
+             [:h6 "Soveršeni Vid / Perfective Aspect"]
+             [future-perfective-view props]]])]))))
 
 ;; person3sg (case verb-type
 ;;             :iti   "ide"
