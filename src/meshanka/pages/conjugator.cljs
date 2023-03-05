@@ -175,7 +175,33 @@
       [:td "oni"]
       [:td (-> props future-perfective :oni)]]]]])
 
-;; LOGIC ;;
+(defn imperative-imperfective
+  [{:keys [verb-type] :as props}]
+  (let [past-impf (past-imperfective props)
+        imperative-base #(.slice past-impf 0 %)
+        imper-base-min-3 (imperative-base -3)
+        base (case verb-type
+               :but                   "budi"
+               (or :mogči :iti :e :i) (str imper-base-min-3 "í")
+               :va                    (str imper-base-min-3 "iváj")
+               ;else
+               (str (imperative-base -2) "j"))]
+
+    {:sg base
+     :pl (str base "te")}))
+
+(defn imperative-perfective
+  [{:keys [verb-type prefix] :as props}]
+  (let [imperative-base (.slice (past-perfective props) 0 -1)
+        base (case verb-type
+               :but "budi"
+               :iti "priidí"
+               (or :a :ova) (str prefix (.slice (past-imperfective props) 0 -3) "áj")
+               (str imperative-base "í"))]
+    {:sg base
+     :pl (str base "te")}))
+
+;; Auxiliary ;;
 
 (defn find-verb-type
   "Conditionally applies Meshanka rules to determine given verb's type."
@@ -227,9 +253,11 @@
          [:hr]
          (when (not (str/blank? @!v))
            [:div
-            [:div.box.has-text-centered
-             [:span "Verb type: "] [:span.tag (:verb-type  props)]
-             [:span "Prefix: "] [:span.tag (:prefix  props)]]
+            [:div.tile.is-ancestor
+             [:div.box
+              [:span [:span "Verb type: "] [:span.tag (:verb-type  props)]]]
+             [:div.box
+              [:span [:span "Prefix: "] [:span.tag (:prefix  props)]]]]
             [:div
              [:h4 "Infinitiv"]
              [:div.block
@@ -256,7 +284,28 @@
              [future-imperfective-view props]]
             [:div
              [:h6 "Soveršeni Vid / Perfective Aspect"]
-             [future-perfective-view props]]])]))))
+             [future-perfective-view props]]
+            [:hr]
+            [:div
+             [:h4 "Imperative"]
+             [:div.block
+              [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
+              [:div.tile
+               [:div.tile
+                [:div "Singular: "]
+                [:div.tag (:sg (imperative-imperfective props))]]
+               [:div.tile
+                [:div "Plural: "]
+                [:div.tag (:pl (imperative-imperfective props))]]]]
+             [:div.block
+              [:h6 "Soveršeni Vid / Perfective Aspect"]
+              [:div.tile
+               [:div.tile
+                [:div "Singular: "]
+                [:div.tag (:sg (imperative-perfective props))]]
+               [:div.tile
+                [:div "Plural: "]
+                [:div.tag (:pl (imperative-perfective props))]]]]]])]))))
 
 ;; person3sg (case verb-type
 ;;             :iti   "ide"
