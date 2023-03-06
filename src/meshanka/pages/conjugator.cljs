@@ -54,32 +54,25 @@
 
 (defn present-tense-view
   [props]
-  [:div#present-tense.block
-   [:h4 "Nastoječi čas / Present tense"]
-   [:div.present-tense
-    [:table.present-tense-table
-     [:thead
-      [:tr
-       [:th ""]
-       [:th "Jedinistveni lik / Singular "]
-       [:th ""]
-       [:th "Množistveni lik / Plural"]]]
-     [:tbody
-      [:tr.person1
-       [:td "ja"]
-       [:td (-> props present-tense :ja)]
-       [:td "mi"]
-       [:td (-> props present-tense :mi)]]
-      [:tr.person2
-       [:td "ti"]
-       [:td (-> props present-tense :ti)]
-       [:td "vi"]
-       [:td (-> props present-tense :vi)]]
-      [:tr.person3
-       [:td "on"]
-       [:td (-> props present-tense :on)]
-       [:td "oni"]
-       [:td (-> props present-tense :oni)]]]]]])
+  (let [verb (present-tense props)]
+    [:div#present-tense.block
+     [:h4 "Nastoječi čas / Present tense"]
+     [:div.present-tense
+      [:table.present-tense-table
+       [:thead
+        [:tr
+         [:th "Jedinistveni lik / Singular "]
+         [:th "Množistveni lik / Plural"]]]
+       [:tbody
+        [:tr.person1
+         [:td (:ja verb)]
+         [:td (:mi verb)]]
+        [:tr.person2
+         [:td (:ti verb)]
+         [:td (:vi verb)]]
+        [:tr.person3
+         [:td (:on verb)]
+         [:td (:oni verb)]]]]]]))
 
 (defn past-imperfective
   [{:keys [base verb-type]}]
@@ -123,57 +116,43 @@
 
 (defn future-imperfective-view
   [props]
-  [:div.block
-   [:table.future-tense-imperfective-table
-    [:thead
-     [:tr
-      [:th ""]
-      [:th "Jedinistveni lik / Singular "]
-      [:th ""]
-      [:th "Množistveni lik / Plural"]]]
-    [:tbody
-     [:tr.person1
-      [:td "ja"]
-      [:td (-> props future-imperfective :ja)]
-      [:td "mi"]
-      [:td (-> props future-imperfective :mi)]]
-     [:tr.person2
-      [:td "ti"]
-      [:td (-> props future-imperfective :ti)]
-      [:td "vi"]
-      [:td (-> props future-imperfective :vi)]]
-     [:tr.person3
-      [:td "on"]
-      [:td (-> props future-imperfective :on)]
-      [:td "oni"]
-      [:td (-> props future-imperfective :oni)]]]]])
+  (let [verb (future-imperfective props)]
+    [:div.block
+     [:table.future-tense-imperfective-table
+      [:thead
+       [:tr
+        [:th "Jedinistveni lik / Singular "]
+        [:th "Množistveni lik / Plural"]]]
+      [:tbody
+       [:tr.person1
+        [:td (:ja verb)]
+        [:td (:mi verb)]]
+       [:tr.person2
+        [:td (:ti verb)]
+        [:td (:vi verb)]]
+       [:tr.person3
+        [:td (:on verb)]
+        [:td (:oni verb)]]]]]))
 
 (defn future-perfective-view
   [props]
-  [:div.block
-   [:table.future-tense-perfective-table
-    [:thead
-     [:tr
-      [:th ""]
-      [:th "Jedinistveni lik / Singular "]
-      [:th ""]
-      [:th "Množistveni lik / Plural"]]]
-    [:tbody
-     [:tr.person1
-      [:td "ja"]
-      [:td (-> props future-perfective :ja)]
-      [:td "mi"]
-      [:td (-> props future-perfective :mi)]]
-     [:tr.person2
-      [:td "ti"]
-      [:td (-> props future-perfective :ti)]
-      [:td "vi"]
-      [:td (-> props future-perfective :vi)]]
-     [:tr.person3
-      [:td "on"]
-      [:td (-> props future-perfective :on)]
-      [:td "oni"]
-      [:td (-> props future-perfective :oni)]]]]])
+  (let [verb (future-perfective props)]
+    [:div.block
+     [:table.future-tense-perfective-table
+      [:thead
+       [:tr
+        [:th "Jedinistveni lik / Singular "]
+        [:th "Množistveni lik / Plural"]]]
+      [:tbody
+       [:tr.person1
+        [:td (:ja verb)]
+        [:td (:mi verb)]]
+       [:tr.person2
+        [:td (:ti verb)]
+        [:td (:vi verb)]]
+       [:tr.person3
+        [:td (:on verb)]
+        [:td (:oni verb)]]]]]))
 
 (defn imperative-imperfective
   [{:keys [verb-type] :as props}]
@@ -267,19 +246,28 @@
               [:h4 "Infinitiv"]
               [:div.block
                [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-               [:div (imperfective-infinitive props)]]
+               [:div.tag (imperfective-infinitive props)]]
               [:div.block
                [:h6 "Soveršeni Vid / Perfective Aspect"]
-               [:div (perfective-infinitive props)]]]
+               [:div.tag (perfective-infinitive props)]]]
              [:div.box
               [:div
                [:h4 "Past tense"]
                [:div.block
                 [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-                [:div (past-imperfective props)]]
+                [:div.tag (past-imperfective props)]]
                [:div.block
                 [:h6 "Soveršeni Vid / Perfective Aspect"]
-                [:div (past-perfective props)]]]]
+                [:div.tag (past-perfective props)]]]]
+             [:div.box
+              [:div
+               [:h4 "Conditional"]
+               [:div.block
+                [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
+                [:div.tag (str "Ja bi " (past-imperfective props))]]
+               [:div.block
+                [:h6 "Soveršeni Vid / Perfective Aspect"]
+                [:div.tag (str "Ja bi " (past-perfective props))]]]]
              [:div.box
               [:div
                [:h4 "Imperative"]
@@ -301,14 +289,47 @@
                  [:div.tile
                   [:div "Plural: "]
                   [:div.tag (:pl (imperative-perfective props))]]]]]]]
+            [:div.tile.is-ancestor
+             [:div.box
+              [:div
+               [:h4 "Present Participle"]
+               [:div.block
+                [:h6 "Active"]
+                [:div.tag (str (:base props) "či")]]
+               [:div.block
+                [:h6 "Passive"]
+                [:div.tag (str (:base props) "mi")]]]]
+             [:div.box
+              [:div
+               [:h4 "Past Active Participle"]
+               [:div.block
+                [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
+                [:div.tag (str (:base props) "vši")]]
+               [:div.block
+                [:h6 "Soveršeni Vid / Perfective Aspect"]
+                [:div.tag (str (past-perfective props) "vši")]]]]
+             [:div.box
+              [:div
+               [:h4 "Past Passive Participle"]
+               [:div.block
+                [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
+                [:div.tag (str (:base props) "ni")]]
+               [:div.block
+                [:h6 "Soveršeni Vid / Perfective Aspect"]
+                [:div.tag (str (past-perfective props) "ni")]]]]
+             [:div.box
+              [:div
+               [:h4 "Verbal Noun"]
+               [:div.block
+                [:div.tag (str (:base props) "nie")]]]]]
             [:hr]
             [present-tense-view props]
             [:hr]
-            [:div
+            [:div.block
              [:h4 "Future tense"]
              [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
              [future-imperfective-view props]]
-            [:div
+            [:div.block
              [:h6 "Soveršeni Vid / Perfective Aspect"]
              [future-perfective-view props]]
             [:hr]
