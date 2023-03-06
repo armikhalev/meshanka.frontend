@@ -177,13 +177,15 @@
 
 (defn imperative-imperfective
   [{:keys [verb-type] :as props}]
-  (let [past-impf (past-imperfective props)
+  (let [past-impf        (past-imperfective props)
         imperative-base #(.slice past-impf 0 %)
         imper-base-min-3 (imperative-base -3)
+        [base _]         (str/split past-impf #"[áéí]") ;; get stressed vowel out
+        base-vowel       (case (re-find #"[áéí]" past-impf) "á" "a", "é" "e", "í" "i", (last past-impf)) ;; replace stressed vowel with unstressed
         base (case verb-type
                :but                   "budi"
                (or :mogči :iti :e :i) (str imper-base-min-3 "í")
-               :va                    (str imper-base-min-3 "iváj")
+               :va                    (str base base-vowel "váj")
                ;else
                (str (imperative-base -2) "j"))]
 
@@ -192,11 +194,13 @@
 
 (defn imperative-perfective
   [{:keys [verb-type prefix] :as props}]
-  (let [imperative-base (.slice (past-perfective props) 0 -1)
+  (let [past-perf       (past-perfective props)
+        imperative-base (.slice past-perf 0 -1)
         base (case verb-type
                :but "budi"
                :iti "priidí"
-               (or :a :ova) (str prefix (.slice (past-imperfective props) 0 -3) "áj")
+               (or :a :ova) (str imperative-base "áj")
+               :va (str past-perf "j")
                (str imperative-base "í"))]
     {:sg base
      :pl (str base "te")}))
@@ -233,7 +237,7 @@
 (defn prepare-verb-props [v]
   (let [v3person-sg          (gstr/trim v)
         splitted-by-dash     (str/split v3person-sg #"-" 2)
-        [prefix verb]   (if (= (count splitted-by-dash) 2) splitted-by-dash [nil (first splitted-by-dash)])
+        [prefix verb]        (if (= (count splitted-by-dash) 2) splitted-by-dash [nil (first splitted-by-dash)])
         verb-type            (find-verb-type (gstr/trim verb))
         exception-ending     (case verb-type :je "je" :ji "ji" :ova "je" :va "je" nil)]
     {:base        (if exception-ending (first (str/split verb exception-ending)) verb)

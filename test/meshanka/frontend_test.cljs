@@ -75,7 +75,7 @@
                               :verb "ukrivaje"
                               :verb-type :va}
                   :present    {:ja "ukrivam", :mi "ukrivamo", :ti "ukrivaš", :vi "ukrivate", :on "ukrivaje", :oni "ukrivajo"}
-                  :imper-pf   {:sg "ukrí" :pl "ukríte"}
+                  :imper-pf   {:sg "ukríj" :pl "ukríjte"}
                   :imper-impf {:sg "ukriváj" :pl "ukrivájte"}
                   :fut-pf     {:ja "ja če ukrím", :mi "mi če ukrímo", :ti "ti če ukríš", :vi "vi če ukríte", :on "on če ukrí", :oni "oni če ukríjo"}
                   :fut-impf   {:ja "bum ukrivat", :mi "bumo ukrivat", :ti "buš ukrivat", :vi "buste ukrivat", :on "bude ukrivat", :oni "bujo ukrivat"}
@@ -83,6 +83,21 @@
                   :inf-impf   "ukrivat"
                   :past-pf    "ukrí"
                   :past-impf  "ukríva"}
+
+                 {:verb      "na-pisavaje"
+                  :prepared  {:base "pisava"
+                              :prefix "na"
+                              :verb "pisavaje"
+                              :verb-type :va}
+                  :present    {:ja "pisavam", :mi "pisavamo", :ti "pisavaš", :vi "pisavate", :on "pisavaje", :oni "pisavajo"}
+                  :imper-pf   {:sg "napisáj" :pl "napisájte"}
+                  :imper-impf {:sg "pisaváj" :pl "pisavájte"}
+                  :fut-pf     {:ja "ja če napisám", :mi "mi če napisámo", :ti "ti če napisáš", :vi "vi če napisáte", :on "on če napisá", :oni "oni če napisájo"}
+                  :fut-impf   {:ja "bum pisavat", :mi "bumo pisavat", :ti "buš pisavat", :vi "buste pisavat", :on "bude pisavat", :oni "bujo pisavat"}
+                  :inf-pf     "napisáti"
+                  :inf-impf   "pisavat"
+                  :past-pf    "napisá"
+                  :past-impf  "pisáva"}
 
                  {:verb      "u-kusaji"
                   :prepared  {:base "kusa"
