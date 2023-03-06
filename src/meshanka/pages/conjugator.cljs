@@ -258,25 +258,47 @@
               [:span [:span "Verb type: "] [:span.tag (:verb-type  props)]]]
              [:div.box
               [:span [:span "Prefix: "] [:span.tag (:prefix  props)]]]]
-            [:div
-             [:h4 "Infinitiv"]
-             [:div.block
-              [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-              [:div (imperfective-infinitive props)]]
-             [:div.block
-              [:h6 "Soveršeni Vid / Perfective Aspect"]
-              [:div (perfective-infinitive props)]]]
+            [:div.tile.is-ancestor
+             [:div.box
+              [:h4 "Infinitiv"]
+              [:div.block
+               [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
+               [:div (imperfective-infinitive props)]]
+              [:div.block
+               [:h6 "Soveršeni Vid / Perfective Aspect"]
+               [:div (perfective-infinitive props)]]]
+             [:div.box
+              [:div
+               [:h4 "Past tense"]
+               [:div.block
+                [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
+                [:div (past-imperfective props)]]
+               [:div.block
+                [:h6 "Soveršeni Vid / Perfective Aspect"]
+                [:div (past-perfective props)]]]]
+             [:div.box
+              [:div
+               [:h4 "Imperative"]
+               [:div.block
+                [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
+                [:div.tile
+                 [:div.tile
+                  [:div "Singular: "]
+                  [:div.tag (:sg (imperative-imperfective props))]]
+                 [:div.tile
+                  [:div "Plural: "]
+                  [:div.tag (:pl (imperative-imperfective props))]]]]
+               [:div.block
+                [:h6 "Soveršeni Vid / Perfective Aspect"]
+                [:div.tile
+                 [:div.tile
+                  [:div "Singular: "]
+                  [:div.tag (:sg (imperative-perfective props))]]
+                 [:div.tile
+                  [:div "Plural: "]
+                  [:div.tag (:pl (imperative-perfective props))]]]]]]]
             [:hr]
             [present-tense-view props]
-            [:hr]
-            [:div
-             [:h4 "Past tense"]
-             [:div.block
-              [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-              [:div (past-imperfective props)]]
-             [:div.block
-              [:h6 "Soveršeni Vid / Perfective Aspect"]
-              [:div (past-perfective props)]]]
             [:hr]
             [:div
              [:h4 "Future tense"]
@@ -286,26 +308,7 @@
              [:h6 "Soveršeni Vid / Perfective Aspect"]
              [future-perfective-view props]]
             [:hr]
-            [:div
-             [:h4 "Imperative"]
-             [:div.block
-              [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-              [:div.tile
-               [:div.tile
-                [:div "Singular: "]
-                [:div.tag (:sg (imperative-imperfective props))]]
-               [:div.tile
-                [:div "Plural: "]
-                [:div.tag (:pl (imperative-imperfective props))]]]]
-             [:div.block
-              [:h6 "Soveršeni Vid / Perfective Aspect"]
-              [:div.tile
-               [:div.tile
-                [:div "Singular: "]
-                [:div.tag (:sg (imperative-perfective props))]]
-               [:div.tile
-                [:div "Plural: "]
-                [:div.tag (:pl (imperative-perfective props))]]]]]])]))))
+            ])]))))
 
 ;; person3sg (case verb-type
 ;;             :iti   "ide"
