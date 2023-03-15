@@ -6,6 +6,8 @@
    [clojure.string :as str]
    [goog.string :as gstr]))
 
+(def accented-vowels #"[áéíúó]")
+
 (defn past-perfective
   [{:keys [base prefix verb-type]}]
   (let [root (if (= verb-type :va)(.slice base 0 -2)(.slice base 0 -1))
@@ -159,8 +161,8 @@
   (let [past-impf        (past-imperfective props)
         imperative-base #(.slice past-impf 0 %)
         imper-base-min-3 (imperative-base -3)
-        [base _]         (str/split past-impf #"[áéí]") ;; get stressed vowel out
-        base-vowel       (case (re-find #"[áéí]" past-impf) "á" "a", "é" "e", "í" "i", (last past-impf)) ;; replace stressed vowel with unstressed
+        [base _]         (str/split past-impf accented-vowels) ;; get stressed vowel out
+        base-vowel       (case (re-find accented-vowels past-impf) "á" "a", "é" "e", "í" "i", "ú" "u", "ó" "o"(last past-impf)) ;; replace stressed vowel with unstressed
         base (case verb-type
                :but                   "budi"
                (or :mogči :iti :e :i) (str imper-base-min-3 "í")
