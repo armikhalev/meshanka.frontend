@@ -14,7 +14,6 @@
                               :vi  "jesté, ste, je"
                               :on  "jest, je"
                               :oni "jesó, so, je"}
-
                   :imper-pf   {:sg "budi" :pl "budite"}
                   :imper-impf {:sg "budi" :pl "budite"}
                   :fut-pf     {:ja  "budem" :mi  "budemo" :ti  "budeš" :vi  "budete" :on  "bude" :oni "budejo"}
@@ -22,7 +21,13 @@
                   :inf-pf     "but"
                   :inf-impf   "but"
                   :past-pf    "be"
-                  :past-impf  "buva"}
+                  :past-impf  "buva"
+
+                  :prs-act-prtc   "budeči"
+                  :prs-pass-prtc  "budemi"
+                  :past-act-prtc  {:impf "buvši" :pf "bevši"}
+                  :past-pass-prtc {:impf "" :pf ""}
+                  :verbal-noun    "butie"}
 
                  {:verb      "pri-ide"
                   :prepared  {:base      "ide"
@@ -37,7 +42,13 @@
                   :inf-pf     "priití"
                   :inf-impf   "iti"
                   :past-pf    "prišed"
-                  :past-impf  "idéva"}
+                  :past-impf  "idéva"
+
+                  :prs-act-prtc   "ideči"
+                  :prs-pass-prtc  "idemi"
+                  :past-act-prtc  {:impf "idevši" :pf "prišedvši"}
+                  :past-pass-prtc {:impf "ideni"  :pf "prišedni"}
+                  :verbal-noun    "idenie"}
 
                  {:verb      "s-može"
                   :prepared  {:base      "može"
@@ -52,7 +63,13 @@
                   :inf-pf     "smogčí"
                   :inf-impf   "mogči"
                   :past-pf    "smožé"
-                  :past-impf  "možéva"}
+                  :past-impf  "možéva"
+
+                  :prs-act-prtc   "možeči"
+                  :prs-pass-prtc  "možemi"
+                  :past-act-prtc  {:impf "moževši" :pf "smožévši"}
+                  :past-pass-prtc {:impf "moženi" :pf "smožéni"}
+                  :verbal-noun    "moženie"}
 
                  {:verb      "iz-polzovaje"
                   :prepared  {:base "polzova"
@@ -67,7 +84,13 @@
                   :inf-pf     "izpolzováti"
                   :inf-impf   "polzovat"
                   :past-pf    "izpolzová"
-                  :past-impf  "polzováva"}
+                  :past-impf  "polzováva"
+
+                  :prs-act-prtc   "polzovači"
+                  :prs-pass-prtc  "polzovami"
+                  :past-act-prtc  {:impf "polzovavši" :pf "izpolzovávši"}
+                  :past-pass-prtc {:impf "polzovani" :pf "izpolzováni" }
+                  :verbal-noun    "polzovanie"}
 
                  {:verb      "ukrivaje"
                   :prepared  {:base "ukriva"
@@ -82,7 +105,34 @@
                   :inf-pf     "ukríti"
                   :inf-impf   "ukrivat"
                   :past-pf    "ukrí"
-                  :past-impf  "ukríva"}
+                  :past-impf  "ukríva"
+
+                  :prs-act-prtc   "ukrivači"
+                  :prs-pass-prtc  "ukrivami"
+                  :past-act-prtc  {:impf "ukrivavši" :pf "ukrívši"}
+                  :past-pass-prtc {:impf "ukrivani" :pf "ukríjeni" } ;; `-jeni` for verbs on -i?
+                  :verbal-noun    "polzovanie"}
+
+                 {:verb      "ot-čuvaje"
+                  :prepared  {:base "čuva"
+                              :prefix "ot"
+                              :verb "čuvaje"
+                              :verb-type :va}
+                  :present    {:ja "čuvam", :mi "čuvamo", :ti "čuvaš", :vi "čuvate", :on "čuvaje", :oni "čuvajo"}
+                  :imper-pf   {:sg "otčúj" :pl "otčújte"}
+                  :imper-impf {:sg "čuváj" :pl "čuvájte"}
+                  :fut-pf     {:ja "ja če otčúm", :mi "mi če otčúmo", :ti "ti če otčúš", :vi "vi če otčúte", :on "on če otčú", :oni "oni če otčújo"}
+                  :fut-impf   {:ja "bum čuvat", :mi "bumo čuvat", :ti "buš čuvat", :vi "buste čuvat", :on "bude čuvat", :oni "bujo čuvat"}
+                  :inf-pf     "otčúti"
+                  :inf-impf   "čuvat"
+                  :past-pf    "otčú"
+                  :past-impf  "čúva"
+
+                  :prs-act-prtc   "čuvači"
+                  :prs-pass-prtc  "čuvami"
+                  :past-act-prtc  {:impf "čuvavši" :pf "otčúvši"}
+                  :past-pass-prtc {:impf "čuvani" :pf "otčújeni" } ;; <-- verbs that have one syllable root get ending `-jeni`
+                  :verbal-noun    "čuvanie"}
 
                  {:verb      "na-pisavaje"
                   :prepared  {:base "pisava"
@@ -97,7 +147,13 @@
                   :inf-pf     "napisáti"
                   :inf-impf   "pisavat"
                   :past-pf    "napisá"
-                  :past-impf  "pisáva"}
+                  :past-impf  "pisáva"
+
+                  :prs-act-prtc   "pisavači"
+                  :prs-pass-prtc  "pisavami"
+                  :past-act-prtc  {:impf "pisavavši" :pf "napisávši"}
+                  :past-pass-prtc {:impf "pisavani" :pf "napisáni" }
+                  :verbal-noun    "pisavanie"}
 
                  {:verb      "u-kusaji"
                   :prepared  {:base "kusa"
@@ -112,7 +168,13 @@
                   :inf-pf     "ukusíti"
                   :inf-impf   "kusat"
                   :past-pf    "ukusí"
-                  :past-impf  "kusáva"}
+                  :past-impf  "kusáva"
+
+                  :prs-act-prtc   "kusači"
+                  :prs-pass-prtc  "kusami"
+                  :past-act-prtc  {:impf "kusavši" :pf "ukusívši"}
+                  :past-pass-prtc {:impf "kusani" :pf "ukušéni" } ;; <-- verbs on -i/-ji become palatalized s->š
+                  :verbal-noun    "kusanie"}
 
                  {:verb      "stiraje"
                   :prepared  {:base "stira"
@@ -127,7 +189,13 @@
                   :inf-pf     "stiréti"
                   :inf-impf   "stirat"
                   :past-pf    "stiré"
-                  :past-impf  "stiráva"}
+                  :past-impf  "stiráva"
+
+                  :prs-act-prtc   "stirači"
+                  :prs-pass-prtc  "stirami"
+                  :past-act-prtc  {:impf "stiravši" :pf "stirévši"}
+                  :past-pass-prtc {:impf "stirani" :pf "stiréni" }
+                  :verbal-noun    "stiranie"}
 
                  {:verb      "kupja"
                   :prepared  {:base "kupja"
@@ -142,7 +210,13 @@
                   :inf-pf     "kupíti"
                   :inf-impf   "kupjat"
                   :past-pf    "kupí"
-                  :past-impf  "kupjáva"}
+                  :past-impf  "kupjáva"
+
+                  :prs-act-prtc   "kupjači"
+                  :prs-pass-prtc  "kupjami"
+                  :past-act-prtc  {:impf "kupjavši" :pf "kupívši"}
+                  :past-pass-prtc {:impf "kupjani" :pf "kupjéni"} ;; <-- verbs on -i/-ji/-ja have ending -jéni
+                  :verbal-noun    "kupjanie"}
 
                  {:verb      "pomoga"
                   :prepared  {:base "pomoga"
@@ -157,7 +231,13 @@
                   :inf-pf     "pomožéti"
                   :inf-impf   "pomogat"
                   :past-pf    "pomožé"
-                  :past-impf  "pomogáva"}
+                  :past-impf  "pomogáva"
+
+                  :prs-act-prtc   "pomogači"
+                  :prs-pass-prtc  "pomogami"
+                  :past-act-prtc  {:impf "pomogavši" :pf "pomožévši"}
+                  :past-pass-prtc {:impf "pomogani" :pf "pomožéni"}
+                  :verbal-noun    "pomoganie"}
 
                  {:verb      "po-iska"
                   :prepared  {:base "iska"
@@ -172,7 +252,13 @@
                   :inf-pf     "poisčéti"
                   :inf-impf   "iskat"
                   :past-pf    "poisčé"
-                  :past-impf  "iskáva"}
+                  :past-impf  "iskáva"
+
+                  :prs-act-prtc   "iskači"
+                  :prs-pass-prtc  "iskami"
+                  :past-act-prtc  {:impf "iskavši" :pf "poisčévši"}
+                  :past-pass-prtc {:impf "iskani" :pf "poisčéni"}
+                  :verbal-noun    "iskanie"}
 
                  {:verb      "u-sluha"
                   :prepared  {:base "sluha"
@@ -187,7 +273,13 @@
                   :inf-pf     "uslušéti"
                   :inf-impf   "sluhat"
                   :past-pf    "uslušé"
-                  :past-impf  "sluháva"}
+                  :past-impf  "sluháva"
+
+                  :prs-act-prtc   "sluhači"
+                  :prs-pass-prtc  "sluhami"
+                  :past-act-prtc  {:impf "sluhavši" :pf "uslušévši"}
+                  :past-pass-prtc {:impf "sluhani" :pf "uslušéni"}
+                  :verbal-noun    "sluhanie"}
 
                  {:verb      "po-veša"
                   :prepared  {:base "veša"
@@ -202,7 +294,14 @@
                   :inf-pf     "povesíti"
                   :inf-impf   "vešat"
                   :past-pf    "povesí"
-                  :past-impf  "vešáva"}
+                  :past-impf  "vešáva"
+
+                  :prs-act-prtc   "vešači"
+                  :prs-pass-prtc  "vešami"
+                  :past-act-prtc  {:impf "vešavši" :pf "povesívši"}
+                  :past-pass-prtc {:impf "vešani" :pf "povešéni"}   ;; <-- verbs on -sí in perfect have ending -jéni here
+                                                                    ;; ORR maybe just use impf root where possible to use prefix? And perfective palatalized in other cases?
+                  :verbal-noun    "vešanie"}
 
                  {:verb      "u-vide"
                   :prepared  {:base "vide"
@@ -217,7 +316,13 @@
                   :inf-pf     "uvidéti"
                   :inf-impf   "videt"
                   :past-pf    "uvidé"
-                  :past-impf  "vidéva"}
+                  :past-impf  "vidéva"
+
+                  :prs-act-prtc   "videči"
+                  :prs-pass-prtc  "videmi"
+                  :past-act-prtc  {:impf "videvši" :pf "uvidévši"}
+                  :past-pass-prtc {:impf "videni" :pf "uvidéni"}
+                  :verbal-noun    "videnie"}
 
                  {:verb      "po-ljubi"
                   :prepared  {:base "ljubi"
@@ -232,7 +337,13 @@
                   :inf-pf     "poljubíti"
                   :inf-impf   "ljubit"
                   :past-pf    "poljubí"
-                  :past-impf  "ljubíva"}
+                  :past-impf  "ljubíva"
+
+                  :prs-act-prtc   "ljubiči"
+                  :prs-pass-prtc  "ljubimi"
+                  :past-act-prtc  {:impf "ljubivši" :pf "poljubívši"}
+                  :past-pass-prtc {:impf "ljubjeni" :pf "poljubjéni"} ;; <-- verbs on -í have ending -jéni here
+                  :verbal-noun    "ljubjenie"} ;; <-- get it from the above form of `past-pass-prtc`
 
                  {:verb      "za-pameta"
                   :prepared  {:base "pameta"
@@ -247,7 +358,13 @@
                   :inf-pf     "zapametáti"
                   :inf-impf   "pametat"
                   :past-pf    "zapametá"
-                  :past-impf  "pametáva"}])
+                  :past-impf  "pametáva"
+
+                  :prs-act-prtc   "pametači"
+                  :prs-pass-prtc  "pametami"
+                  :past-act-prtc  {:impf "pametavši" :pf "zapametávši"}
+                  :past-pass-prtc {:impf "pametani" :pf "zapametáni"}
+                  :verbal-noun    "pametanie"}])
 
 (deftest prepare-verb-props-test
   "should produce a valid map of props used in conjugator fns."
@@ -289,3 +406,7 @@
 (deftest imperative-perfective-test
   (doseq [v test-verbs]
     (is (= (:imper-pf v) (-> (:verb v) conjugator/prepare-verb-props conjugator/imperative-perfective)))))
+
+(deftest present-active-participle-test
+  (doseq [v test-verbs]
+    (is (= (:prs-act-prtc v) (-> (:verb v) conjugator/prepare-verb-props conjugator/present-active-participle)))))
