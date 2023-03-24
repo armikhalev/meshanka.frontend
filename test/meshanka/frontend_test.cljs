@@ -37,7 +37,7 @@
                   :present    {:ja "idem", :mi "idemo", :ti "ideš", :vi "idete", :on "ide", :oni "idejo"}
                   :imper-pf   {:sg "priidí" :pl "priidíte"}
                   :imper-impf {:sg "idí" :pl "idíte"}
-                  :fut-pf     {:ja "ja če priidém", :mi "mi če priidémo", :ti "ti če priidéš", :vi "vi če priidéte", :on "on če priidé", :oni "oni če priidéjo"}
+                  :fut-pf     {:ja "ja če priidem", :mi "mi če priidemo", :ti "ti če priideš", :vi "vi če priidete", :on "on če priide", :oni "oni če priidejo"}
                   :fut-impf   {:ja "bum iti", :mi "bumo iti", :ti "buš iti", :vi "buste iti", :on "bude iti", :oni "bujo iti"}
                   :inf-pf     "priití"
                   :inf-impf   "iti"
@@ -58,7 +58,7 @@
                   :present    {:ja "možem", :mi "možemo", :ti "možeš", :vi "možete", :on "može", :oni "možejo"}
                   :imper-pf   {:sg "smoží" :pl "smožíte"}
                   :imper-impf {:sg "moží" :pl "možíte"}
-                  :fut-pf     {:ja "ja če smožém", :mi "mi če smožémo", :ti "ti če smožéš", :vi "vi če smožéte", :on "on če smožé", :oni "oni če smožéjo"}
+                  :fut-pf     {:ja "ja če smožem", :mi "mi če smožemo", :ti "ti če smožeš", :vi "vi če smožete", :on "on če smože", :oni "oni če smožejo"}
                   :fut-impf   {:ja "bum mogči", :mi "bumo mogči", :ti "buš mogči", :vi "buste mogči", :on "bude mogči", :oni "bujo mogči"}
                   :inf-pf     "smogčí"
                   :inf-impf   "mogči"
@@ -79,7 +79,7 @@
                   :present    {:ja "polzovam", :mi "polzovamo", :ti "polzovaš", :vi "polzovate", :on "polzovaje", :oni "polzovajo"}
                   :imper-pf   {:sg "izpolzováj" :pl "izpolzovájte"}
                   :imper-impf {:sg "polzováj" :pl "polzovájte"}
-                  :fut-pf     {:ja "ja če izpolzovám", :mi "mi če izpolzovámo", :ti "ti če izpolzováš", :vi "vi če izpolzováte", :on "on če izpolzová", :oni "oni če izpolzovájo"}
+                  :fut-pf     {:ja "ja če izpolzovam", :mi "mi če izpolzovamo", :ti "ti če izpolzovaš", :vi "vi če izpolzovate", :on "on če izpolzova", :oni "oni če izpolzovajo"}
                   :fut-impf   {:ja "bum polzovat", :mi "bumo polzovat", :ti "buš polzovat", :vi "buste polzovat", :on "bude polzovat", :oni "bujo polzovat"}
                   :inf-pf     "izpolzováti"
                   :inf-impf   "polzovat"
@@ -100,7 +100,7 @@
                   :present    {:ja "ukrivam", :mi "ukrivamo", :ti "ukrivaš", :vi "ukrivate", :on "ukrivaje", :oni "ukrivajo"}
                   :imper-pf   {:sg "ukríj" :pl "ukríjte"}
                   :imper-impf {:sg "ukriváj" :pl "ukrivájte"}
-                  :fut-pf     {:ja "ja če ukrím", :mi "mi če ukrímo", :ti "ti če ukríš", :vi "vi če ukríte", :on "on če ukrí", :oni "oni če ukríjo"}
+                  :fut-pf     {:ja "ja če ukrim", :mi "mi če ukrimo", :ti "ti če ukriš", :vi "vi če ukrite", :on "on če ukri", :oni "oni če ukrijo"}
                   :fut-impf   {:ja "bum ukrivat", :mi "bumo ukrivat", :ti "buš ukrivat", :vi "buste ukrivat", :on "bude ukrivat", :oni "bujo ukrivat"}
                   :inf-pf     "ukríti"
                   :inf-impf   "ukrivat"
@@ -121,7 +121,7 @@
                   :present    {:ja "čuvam", :mi "čuvamo", :ti "čuvaš", :vi "čuvate", :on "čuvaje", :oni "čuvajo"}
                   :imper-pf   {:sg "otčúj" :pl "otčújte"}
                   :imper-impf {:sg "čuváj" :pl "čuvájte"}
-                  :fut-pf     {:ja "ja če otčúm", :mi "mi če otčúmo", :ti "ti če otčúš", :vi "vi če otčúte", :on "on če otčú", :oni "oni če otčújo"}
+                  :fut-pf     {:ja "ja če otčum", :mi "mi če otčumo", :ti "ti če otčuš", :vi "vi če otčute", :on "on če otču", :oni "oni če otčujo"}
                   :fut-impf   {:ja "bum čuvat", :mi "bumo čuvat", :ti "buš čuvat", :vi "buste čuvat", :on "bude čuvat", :oni "bujo čuvat"}
                   :inf-pf     "otčúti"
                   :inf-impf   "čuvat"
@@ -142,7 +142,7 @@
                   :present    {:ja "pisavam", :mi "pisavamo", :ti "pisavaš", :vi "pisavate", :on "pisavaje", :oni "pisavajo"}
                   :imper-pf   {:sg "napisáj" :pl "napisájte"}
                   :imper-impf {:sg "pisaváj" :pl "pisavájte"}
-                  :fut-pf     {:ja "ja če napisám", :mi "mi če napisámo", :ti "ti če napisáš", :vi "vi če napisáte", :on "on če napisá", :oni "oni če napisájo"}
+                  :fut-pf     {:ja "ja če napisam", :mi "mi če napisamo", :ti "ti če napisaš", :vi "vi če napisate", :on "on če napisa", :oni "oni če napisajo"}
                   :fut-impf   {:ja "bum pisavat", :mi "bumo pisavat", :ti "buš pisavat", :vi "buste pisavat", :on "bude pisavat", :oni "bujo pisavat"}
                   :inf-pf     "napisáti"
                   :inf-impf   "pisavat"
@@ -163,7 +163,7 @@
                   :imper-pf   {:sg "ukusí" :pl "ukusíte"}
                   :imper-impf {:sg "kusáj" :pl "kusájte"}
                   :present    {:ja "kusam", :mi "kusamo", :ti "kusaš", :vi "kusate", :on "kusaji", :oni "kusajo"}
-                  :fut-pf     {:ja "ja če ukusím", :mi "mi če ukusímo", :ti "ti če ukusíš", :vi "vi če ukusíte", :on "on če ukusí", :oni "oni če ukusíjo"}
+                  :fut-pf     {:ja "ja če ukusim", :mi "mi če ukusimo", :ti "ti če ukusiš", :vi "vi če ukusite", :on "on če ukusi", :oni "oni če ukusijo"}
                   :fut-impf   {:ja "bum kusat", :mi "bumo kusat", :ti "buš kusat", :vi "buste kusat", :on "bude kusat", :oni "bujo kusat"}
                   :inf-pf     "ukusíti"
                   :inf-impf   "kusat"
@@ -184,7 +184,7 @@
                   :present    {:ja "stiram", :mi "stiramo", :ti "stiraš", :vi "stirate", :on "stiraje", :oni "stirajo"}
                   :imper-pf   {:sg "stirí" :pl "stiríte"}
                   :imper-impf {:sg "stiráj" :pl "stirájte"}
-                  :fut-pf     {:ja "ja če stirém", :mi "mi če stirémo", :ti "ti če stiréš", :vi "vi če stiréte", :on "on če stiré", :oni "oni če stiréjo"}
+                  :fut-pf     {:ja "ja če stirem", :mi "mi če stiremo", :ti "ti če stireš", :vi "vi če stirete", :on "on če stire", :oni "oni če stirejo"}
                   :fut-impf   {:ja "bum stirat", :mi "bumo stirat", :ti "buš stirat", :vi "buste stirat", :on "bude stirat", :oni "bujo stirat"}
                   :inf-pf     "stiréti"
                   :inf-impf   "stirat"
@@ -205,7 +205,7 @@
                   :present    {:ja "kupjam", :mi "kupjamo", :ti "kupjaš", :vi "kupjate", :on "kupja", :oni "kupjajo"}
                   :imper-pf   {:sg "kupí" :pl "kupíte"}
                   :imper-impf {:sg "kupjáj" :pl "kupjájte"}
-                  :fut-pf     {:ja "ja če kupím", :mi "mi če kupímo", :ti "ti če kupíš", :vi "vi če kupíte", :on "on če kupí", :oni "oni če kupíjo"}
+                  :fut-pf     {:ja "ja če kupim", :mi "mi če kupimo", :ti "ti če kupiš", :vi "vi če kupite", :on "on če kupi", :oni "oni če kupijo"}
                   :fut-impf   {:ja "bum kupjat", :mi "bumo kupjat", :ti "buš kupjat", :vi "buste kupjat", :on "bude kupjat", :oni "bujo kupjat"}
                   :inf-pf     "kupíti"
                   :inf-impf   "kupjat"
@@ -226,7 +226,7 @@
                   :present    {:ja "pomogam", :mi "pomogamo", :ti "pomogaš", :vi "pomogate", :on "pomoga", :oni "pomogajo"}
                   :imper-pf   {:sg "pomoží" :pl "pomožíte"}
                   :imper-impf {:sg "pomogáj" :pl "pomogájte"}
-                  :fut-pf     {:ja "ja če pomožém", :mi "mi če pomožémo", :ti "ti če pomožéš", :vi "vi če pomožéte", :on "on če pomožé", :oni "oni če pomožéjo"}
+                  :fut-pf     {:ja "ja če pomožem", :mi "mi če pomožemo", :ti "ti če pomožeš", :vi "vi če pomožete", :on "on če pomože", :oni "oni če pomožejo"}
                   :fut-impf   {:ja "bum pomogat", :mi "bumo pomogat", :ti "buš pomogat", :vi "buste pomogat", :on "bude pomogat", :oni "bujo pomogat"}
                   :inf-pf     "pomožéti"
                   :inf-impf   "pomogat"
@@ -247,7 +247,7 @@
                   :present    {:ja "iskam", :mi "iskamo", :ti "iskaš", :vi "iskate", :on "iska", :oni "iskajo"}
                   :imper-pf   {:sg "poisčí" :pl "poisčíte"}
                   :imper-impf {:sg "iskáj" :pl "iskájte"}
-                  :fut-pf     {:ja "ja če poisčém", :mi "mi če poisčémo", :ti "ti če poisčéš", :vi "vi če poisčéte", :on "on če poisčé", :oni "oni če poisčéjo"}
+                  :fut-pf     {:ja "ja če poisčem", :mi "mi če poisčemo", :ti "ti če poisčeš", :vi "vi če poisčete", :on "on če poisče", :oni "oni če poisčejo"}
                   :fut-impf   {:ja "bum iskat", :mi "bumo iskat", :ti "buš iskat", :vi "buste iskat", :on "bude iskat", :oni "bujo iskat"}
                   :inf-pf     "poisčéti"
                   :inf-impf   "iskat"
@@ -268,7 +268,7 @@
                   :present    {:ja "sluham", :mi "sluhamo", :ti "sluhaš", :vi "sluhate", :on "sluha", :oni "sluhajo"}
                   :imper-pf   {:sg "usluší" :pl "uslušíte"}
                   :imper-impf {:sg "sluháj" :pl "sluhájte"}
-                  :fut-pf     {:ja "ja če uslušém", :mi "mi če uslušémo", :ti "ti če uslušéš", :vi "vi če uslušéte", :on "on če uslušé", :oni "oni če uslušéjo"}
+                  :fut-pf     {:ja "ja če uslušem", :mi "mi če uslušemo", :ti "ti če uslušeš", :vi "vi če uslušete", :on "on če usluše", :oni "oni če uslušejo"}
                   :fut-impf   {:ja "bum sluhat", :mi "bumo sluhat", :ti "buš sluhat", :vi "buste sluhat", :on "bude sluhat", :oni "bujo sluhat"}
                   :inf-pf     "uslušéti"
                   :inf-impf   "sluhat"
@@ -289,7 +289,7 @@
                   :present    {:ja "vešam", :mi "vešamo", :ti "vešaš", :vi "vešate", :on "veša", :oni "vešajo"}
                   :imper-pf   {:sg "povesí" :pl "povesíte"}
                   :imper-impf {:sg "vešáj" :pl "vešájte"}
-                  :fut-pf     {:ja "ja če povesím", :mi "mi če povesímo", :ti "ti če povesíš", :vi "vi če povesíte", :on "on če povesí", :oni "oni če povesíjo"}
+                  :fut-pf     {:ja "ja če povesim", :mi "mi če povesimo", :ti "ti če povesiš", :vi "vi če povesite", :on "on če povesi", :oni "oni če povesijo"}
                   :fut-impf   {:ja "bum vešat", :mi "bumo vešat", :ti "buš vešat", :vi "buste vešat", :on "bude vešat", :oni "bujo vešat"}
                   :inf-pf     "povesíti"
                   :inf-impf   "vešat"
@@ -311,7 +311,7 @@
                   :present    {:ja "videm", :mi "videmo", :ti "videš", :vi "videte", :on "vide", :oni "videjo"}
                   :imper-pf   {:sg "uvidí" :pl "uvidíte"}
                   :imper-impf {:sg "vidí" :pl "vidíte"}
-                  :fut-pf     {:ja "ja če uvidém", :mi "mi če uvidémo", :ti "ti če uvidéš", :vi "vi če uvidéte", :on "on če uvidé", :oni "oni če uvidéjo"}
+                  :fut-pf     {:ja "ja če uvidem", :mi "mi če uvidemo", :ti "ti če uvideš", :vi "vi če uvidete", :on "on če uvide", :oni "oni če uvidejo"}
                   :fut-impf   {:ja "bum videt", :mi "bumo videt", :ti "buš videt", :vi "buste videt", :on "bude videt", :oni "bujo videt"}
                   :inf-pf     "uvidéti"
                   :inf-impf   "videt"
@@ -332,7 +332,7 @@
                   :present    {:ja "ljubim", :mi "ljubimo", :ti "ljubiš", :vi "ljubite", :on "ljubi", :oni "ljubijo"}
                   :imper-pf   {:sg "poljubí" :pl "poljubíte"}
                   :imper-impf {:sg "ljubí" :pl "ljubíte"}
-                  :fut-pf     {:ja "ja če poljubím", :mi "mi če poljubímo", :ti "ti če poljubíš", :vi "vi če poljubíte", :on "on če poljubí", :oni "oni če poljubíjo"}
+                  :fut-pf     {:ja "ja če poljubim", :mi "mi če poljubimo", :ti "ti če poljubiš", :vi "vi če poljubite", :on "on če poljubi", :oni "oni če poljubijo"}
                   :fut-impf   {:ja "bum ljubit", :mi "bumo ljubit", :ti "buš ljubit", :vi "buste ljubit", :on "bude ljubit", :oni "bujo ljubit"}
                   :inf-pf     "poljubíti"
                   :inf-impf   "ljubit"
@@ -353,7 +353,7 @@
                   :present    {:ja "pametam", :mi "pametamo", :ti "pametaš", :vi "pametate", :on "pameta", :oni "pametajo"}
                   :imper-pf   {:sg "zapametáj" :pl "zapametájte"}
                   :imper-impf {:sg "pametáj" :pl "pametájte"}
-                  :fut-pf     {:ja "ja če zapametám", :mi "mi če zapametámo", :ti "ti če zapametáš", :vi "vi če zapametáte", :on "on če zapametá", :oni "oni če zapametájo"}
+                  :fut-pf     {:ja "ja če zapametam", :mi "mi če zapametamo", :ti "ti če zapametaš", :vi "vi če zapametate", :on "on če zapameta", :oni "oni če zapametajo"}
                   :fut-impf   {:ja "bum pametat", :mi "bumo pametat", :ti "buš pametat", :vi "buste pametat", :on "bude pametat", :oni "bujo pametat"}
                   :inf-pf     "zapametáti"
                   :inf-impf   "pametat"

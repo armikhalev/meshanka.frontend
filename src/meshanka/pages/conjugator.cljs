@@ -8,6 +8,18 @@
 
 (def accented-vowels #"[áéíúó]")
 
+(defn replace-accented-vowels
+  [past-impf]
+  (let [[base _]         (str/split past-impf accented-vowels) ;; get stressed vowel out
+        unstressed-vowel (case (re-find accented-vowels past-impf)
+                           "á" "a"
+                           "é" "e"
+                           "í" "i"
+                           "ú" "u"
+                           "ó" "o"
+                           (last past-impf))]
+    [base unstressed-vowel]))
+
 (defn past-perfective
   [{:keys [base prefix verb-type]}]
   (let [root (if (= verb-type :va)(.slice base 0 -2)(.slice base 0 -1))
@@ -97,13 +109,14 @@
   [{:keys [verb-type] :as props}]
   (let [past-perf (past-perfective props)
         but-type? (= :but verb-type)
-        iti-type? (= :iti verb-type)]
-    {:ja  (cond but-type? "budem"  iti-type? "ja če priidém"   :default (str "ja če " past-perf "m"))
-     :mi  (cond but-type? "budemo" iti-type? "mi če priidémo"  :default (str "mi če " past-perf "mo"))
-     :ti  (cond but-type? "budeš"  iti-type? "ti če priidéš"   :default (str "ti če " past-perf "š"))
-     :vi  (cond but-type? "budete" iti-type? "vi če priidéte"  :default (str "vi če " past-perf "te"))
-     :on  (cond but-type? "bude"   iti-type? "on če priidé"    :default (str "on če " past-perf))
-     :oni (cond but-type? "budejo" iti-type? "oni če priidéjo" :default (str "oni če " past-perf "jo"))}))
+        iti-type? (= :iti verb-type)
+        [base base-vowel] (replace-accented-vowels past-perf)] ;; replace stressed vowel with unstressed
+    {:ja  (cond but-type? "budem"  iti-type? "ja če priidem"   :default (str "ja če " base base-vowel "m"))
+     :mi  (cond but-type? "budemo" iti-type? "mi če priidemo"  :default (str "mi če " base base-vowel "mo"))
+     :ti  (cond but-type? "budeš"  iti-type? "ti če priideš"   :default (str "ti če " base base-vowel "š"))
+     :vi  (cond but-type? "budete" iti-type? "vi če priidete"  :default (str "vi če " base base-vowel "te"))
+     :on  (cond but-type? "bude"   iti-type? "on če priide"    :default (str "on če " base base-vowel))
+     :oni (cond but-type? "budejo" iti-type? "oni če priidejo" :default (str "oni če " base base-vowel "jo"))}))
 
 (defn future-imperfective
   [{:keys [verb-type] :as props}]
@@ -158,16 +171,15 @@
 
 (defn imperative-imperfective
   [{:keys [verb-type] :as props}]
-  (let [past-impf        (past-imperfective props)
-        imperative-base #(.slice past-impf 0 %)
-        imper-base-min-3 (imperative-base -3)
-        [base _]         (str/split past-impf accented-vowels) ;; get stressed vowel out
-        base-vowel       (case (re-find accented-vowels past-impf) "á" "a", "é" "e", "í" "i", "ú" "u", "ó" "o"(last past-impf)) ;; replace stressed vowel with unstressed
+  (let [past-impf         (past-imperfective props)
+        imperative-base  #(.slice past-impf 0 %)
+        imper-base-min-3  (imperative-base -3)
+        [base base-vowel] (replace-accented-vowels past-impf) ;; replace stressed vowel with unstressed
         base (case verb-type
                :but                   "budi"
                (or :mogči :iti :e :i) (str imper-base-min-3 "í")
                :va                    (str base base-vowel "váj")
-               ;else
+                                        ;else
                (str (imperative-base -2) "j"))]
 
     {:sg base
