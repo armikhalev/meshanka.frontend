@@ -111,7 +111,7 @@
                   :prs-pass-prtc  "ukrivami"
                   :past-act-prtc  {:impf "ukrivavši" :pf "ukrívši"}
                   :past-pass-prtc {:impf "ukrivani" :pf "ukríjeni" } ;; `-jeni` for verbs on -i?
-                  :verbal-noun    "polzovanie"}
+                  :verbal-noun    "ukrivanie"}
 
                  {:verb      "ot-čuvaje"
                   :prepared  {:base "čuva"
@@ -173,7 +173,7 @@
                   :prs-act-prtc   "kusači"
                   :prs-pass-prtc  "kusami"
                   :past-act-prtc  {:impf "kusavši" :pf "ukusívši"}
-                  :past-pass-prtc {:impf "kusani" :pf "ukušéni" } ;; <-- verbs on -i/-ji become palatalized s->š
+                  :past-pass-prtc {:impf "kusani" :pf "ukusjeni" } ;; <-- verbs on -i/-ji get ending -jeni
                   :verbal-noun    "kusanie"}
 
                  {:verb      "stiraje"
@@ -215,7 +215,7 @@
                   :prs-act-prtc   "kupjači"
                   :prs-pass-prtc  "kupjami"
                   :past-act-prtc  {:impf "kupjavši" :pf "kupívši"}
-                  :past-pass-prtc {:impf "kupjani" :pf "kupjéni"} ;; <-- verbs on -i/-ji/-ja have ending -jéni
+                  :past-pass-prtc {:impf "kupjani" :pf "kupjeni"} ;; <-- verbs on -i/-ji/-ja have ending -jéni
                   :verbal-noun    "kupjanie"}
 
                  {:verb      "pomoga"
@@ -299,7 +299,7 @@
                   :prs-act-prtc   "vešači"
                   :prs-pass-prtc  "vešami"
                   :past-act-prtc  {:impf "vešavši" :pf "povesívši"}
-                  :past-pass-prtc {:impf "vešani" :pf "povešéni"}   ;; <-- verbs on -sí in perfect have ending -jéni here
+                  :past-pass-prtc {:impf "vešani" :pf "povešeni"}   ;; <-- verbs on -sí in perfect have ending -jéni here
                                                                     ;; ORR maybe just use impf root where possible to use prefix? And perfective palatalized in other cases?
                   :verbal-noun    "vešanie"}
 
@@ -342,7 +342,7 @@
                   :prs-act-prtc   "ljubiči"
                   :prs-pass-prtc  "ljubimi"
                   :past-act-prtc  {:impf "ljubivši" :pf "poljubívši"}
-                  :past-pass-prtc {:impf "ljubjeni" :pf "poljubjéni"} ;; <-- verbs on -í have ending -jéni here
+                  :past-pass-prtc {:impf "ljubjeni" :pf "poljubjeni"} ;; <-- verbs on -í have ending -jeni here
                   :verbal-noun    "ljubjenie"} ;; <-- get it from the above form of `past-pass-prtc`
 
                  {:verb      "za-pameta"
@@ -410,3 +410,23 @@
 (deftest present-active-participle-test
   (doseq [v test-verbs]
     (is (= (:prs-act-prtc v) (-> (:verb v) conjugator/prepare-verb-props conjugator/present-active-participle)))))
+
+(deftest present-passive-participle-test
+  (doseq [v test-verbs]
+    (is (= (:prs-pass-prtc v) (-> (:verb v) conjugator/prepare-verb-props conjugator/present-passive-participle)))))
+
+(deftest past-active-participle-test
+  (doseq [v test-verbs]
+    (is (= (:past-act-prtc v) (-> (:verb v) conjugator/prepare-verb-props conjugator/past-active-participle)))))
+
+(deftest past-passive-participle-test
+  (doseq [v test-verbs]
+    (let [prepared-verb (-> v :verb conjugator/prepare-verb-props)]
+      (is (= (:past-pass-prtc v) (conjugator/past-passive-participle prepared-verb))
+          (str ":: Verb type: " (:verb-type prepared-verb))))))
+
+(deftest verbal-noun-test
+  (doseq [v test-verbs]
+    (let [prepared-verb (-> v :verb conjugator/prepare-verb-props)]
+      (is (= (:verbal-noun v) (conjugator/verbal-noun prepared-verb))
+          (str ":: Verb type: " (:verb-type prepared-verb))))))

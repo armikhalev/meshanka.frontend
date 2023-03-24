@@ -198,6 +198,58 @@
     {:sg base
      :pl (str base "te")}))
 
+(defn present-active-participle
+  [props]
+  (str (:base props) "či"))
+
+(defn present-passive-participle
+  [props]
+  (str (:base props) "mi"))
+
+(defn past-active-participle
+  [props]
+  (case (:verb-type props)
+    :but {:pf "bevši" :impf "buvši"}
+    ;; default
+    {:pf   (str (past-perfective props) "vši")
+     :impf (str (:base props) "vši")}))
+
+(defn past-passive-participle
+  [{:keys [verb-type base prefix] :as props}]
+  (let [past-perfective-form (past-perfective props)
+        ends-on-a-accented?  (gstr/caseInsensitiveEndsWith past-perfective-form "á")
+        ends-on-a?           (gstr/caseInsensitiveEndsWith past-perfective-form "a")
+        base                 (:base props)
+        pf-root              (.slice past-perfective-form 0 -1)
+        impf-root            (.slice base 0 -1)]
+    (case verb-type
+      :but       {:pf "" :impf ""} ;; <-- no such forms
+      :ša->si    {:impf  (str base "ni")
+                  :pf    (str prefix impf-root "eni")}
+      (:ji :ja ) {:impf  (str base "ni")
+                  :pf    (str pf-root "jeni")}
+      :i         {:impf  (str impf-root "jeni")
+                  :pf    (str pf-root "jeni")}
+      :va        (cond
+                   (not (or ends-on-a? ends-on-a-accented?))
+                   {:impf  (str base "ni")
+                    :pf    (str past-perfective-form "jeni")}
+
+                   :default
+                   {:impf  (str base "ni")
+                    :pf    (str past-perfective-form "ni")})
+      ;; default
+      {:pf   (str past-perfective-form "ni")
+       :impf (str base "ni")})))
+
+(defn verbal-noun
+  [{:keys [verb-type base] :as props}]
+  (case verb-type
+    :but "butie"
+    :i   (str (.slice base 0 -1) "jenie")
+    ;; default
+    (str (:base props) "nie")))
+
 ;; Auxiliary ;;
 
 (defn find-verb-type
@@ -234,7 +286,7 @@
         verb-type            (find-verb-type (gstr/trim verb))
         exception-ending     (case verb-type :je "je" :ji "ji" :ova "je" :va "je" nil)]
     {:base        (if exception-ending (first (str/split verb exception-ending)) verb)
-     :prefix prefix
+     :prefix      prefix
      :verb        verb
      :verb-type   verb-type}))
 
@@ -309,33 +361,33 @@
                [:h4 "Present Participle"]
                [:div.block
                 [:h6 "Active"]
-                [:div.tag (str (:base props) "či")]]
+                [:div.tag (present-active-participle props)]]
                [:div.block
                 [:h6 "Passive"]
-                [:div.tag (str (:base props) "mi")]]]]
+                [:div.tag (present-passive-participle props)]]]]
              [:div.box
               [:div
                [:h4 "Past Active Participle"]
                [:div.block
                 [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-                [:div.tag (str (:base props) "vši")]]
+                [:div.tag (-> props past-active-participle :impf)]]
                [:div.block
                 [:h6 "Soveršeni Vid / Perfective Aspect"]
-                [:div.tag (str (past-perfective props) "vši")]]]]
+                [:div.tag (-> props past-active-participle :pf)]]]]
              [:div.box
               [:div
                [:h4 "Past Passive Participle"]
                [:div.block
                 [:h6 "Nesoveršeni Vid / Imperfective Aspect"]
-                [:div.tag (str (:base props) "ni")]]
+                [:div.tag (-> props past-passive-participle :impf)]]
                [:div.block
                 [:h6 "Soveršeni Vid / Perfective Aspect"]
-                [:div.tag (str (past-perfective props) "ni")]]]]
+                [:div.tag (-> props past-passive-participle :pf)]]]]
              [:div.box
               [:div
                [:h4 "Verbal Noun"]
                [:div.block
-                [:div.tag (str (:base props) "nie")]]]]]
+                [:div.tag (verbal-noun props)]]]]]
             [:hr]
             [present-tense-view props]
             [:hr]
