@@ -1,7 +1,7 @@
 (ns meshanka.core-test
     (:require
      [cljs.test :refer-macros [deftest is testing]]
-     [meshanka.pages.views.conjugator.view :as conjugator]))
+     [meshanka.pages.conjugator :as conjugator]))
 
 (def test-verbs [{:verb "bude"
                   :prepared  {:base      "bude"

@@ -1,4 +1,4 @@
-(ns meshanka.pages.views.conjugator.view
+(ns meshanka.pages.conjugator
   (:require
    ;; [meshanka.subs :as subs]
    [reagent.core :as r]

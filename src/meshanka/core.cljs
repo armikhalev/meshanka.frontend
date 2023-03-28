@@ -3,7 +3,7 @@
    [goog.dom :as gdom]
    [reagent.core :as reagent :refer [atom]]
    [reagent.dom :as rdom]
-   [meshanka.pages.views.conjugator.view :as conjugator]))
+   [meshanka.pages.conjugator :as conjugator]))
 
 (defn multiply [a b] (* a b))
 
