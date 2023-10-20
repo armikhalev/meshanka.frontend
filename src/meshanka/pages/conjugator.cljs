@@ -27,16 +27,17 @@
         stressed-vowel (case ending "a" "á" "e" "é" "u" "ú" "o" "ó" "i" "í" ending)
         stem (.slice root 0 -1)]
     (case  verb-type
-      :iti    (str prefix "šed")
-      :but    "be"
-      :va     (str prefix stem stressed-vowel)
-      :ji     (str prefix root "í")
-      :je     (str prefix root "é")
-      :ja     (str prefix stem "í")
-      :ga->že (str prefix stem "žé")
-      :ka->če (str prefix stem "čé")
-      :ha->še (str prefix stem "šé")
-      :ša->si (str prefix stem "sí")
+      :iti      (str prefix "šed")
+      :but      "be"
+      :va       (str prefix stem stressed-vowel)
+      :ji       (str prefix root "í")
+      :je       (str prefix root "é")
+      :ja       (str prefix stem "í")
+      :ga->že   (str prefix stem "žé")
+      :ka->če   (str prefix stem "čé")
+      :ha->še   (str prefix stem "šé")
+      :ša->si   (str prefix stem "sí")
+      :žaji->zi (str prefix stem "zí")
       (str prefix root stressed-vowel))))
 
 (defn imperfective-infinitive
@@ -262,6 +263,7 @@
       "može"  :mogči
       "ovaje" :ova
       "vaje"  :va
+      "žaji"  :žaji->zi
       "ji"    :ji
       "je"    :je
       "ja"    :ja
@@ -284,7 +286,7 @@
         splitted-by-dash     (str/split v3person-sg #"-" 2)
         [prefix verb]        (if (= (count splitted-by-dash) 2) splitted-by-dash [nil (first splitted-by-dash)])
         verb-type            (find-verb-type (gstr/trim verb))
-        exception-ending     (case verb-type :je "je" :ji "ji" :ova "je" :va "je" nil)]
+        exception-ending     (case verb-type :je "je" :ji "ji" :ova "je" :va "je" :žaji->zi "ji" nil)]
     {:base        (if exception-ending (first (str/split verb exception-ending)) verb)
      :prefix      prefix
      :verb        verb
@@ -398,22 +400,5 @@
             [:div.block
              [:h6 "Soveršeni Vid / Perfective Aspect"]
              [future-perfective-view props]]
-            [:hr]
-            ])]))))
+            [:hr]])]))))
 
-;; person3sg (case verb-type
-;;             :iti   "ide"
-;;             :mogči "može"
-;;             :ova   
-;;             :va
-;;             :ji
-;;             :je
-;;             :but
-;;             :ja
-;;             :ga->že
-;;             :ka->če
-;;             :ha->še
-;;             :e
-;;             :i
-;;             :a
-;; v)

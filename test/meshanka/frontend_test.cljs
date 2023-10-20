@@ -364,7 +364,28 @@
                   :prs-pass-prtc  "pametami"
                   :past-act-prtc  {:impf "pametavši" :pf "zapametávši"}
                   :past-pass-prtc {:impf "pametani" :pf "zapametáni"}
-                  :verbal-noun    "pametanie"}])
+                  :verbal-noun    "pametanie"}
+
+                 {:verb      "izobražaji"
+                  :prepared  {:base "izobraža"
+                              :prefix nil
+                              :verb "izobražaji"
+                              :verb-type :žaji->zi}
+                  :present    {:ja "izobražam", :mi "izobražamo", :ti "izobražaš", :vi "izobražate", :on "izobražaji", :oni "izobražajo"}
+                  :imper-pf   {:sg "izobrazí" :pl "izobrazíte"}
+                  :imper-impf {:sg "izobražáj" :pl "izobražájte"}
+                  :fut-pf     {:ja "ja če izobrazim", :mi "mi če izobrazimo", :ti "ti če izobraziš", :vi "vi če izobrazite", :on "on če izobrazi", :oni "oni če izobrazijo"}
+                  :fut-impf   {:ja "bum izobražat", :mi "bumo izobražat", :ti "buš izobražat", :vi "buste izobražat", :on "bude izobražat", :oni "bujo izobražat"}
+                  :inf-pf     "izobrazíti"
+                  :inf-impf   "izobražat"
+                  :past-pf    "izobrazí"
+                  :past-impf  "izobražáva"
+
+                  :prs-act-prtc   "izobražači"
+                  :prs-pass-prtc  "izobražami"
+                  :past-act-prtc  {:impf "izobražavši" :pf "izobrazívši"}
+                  :past-pass-prtc {:impf "izobražani" :pf "izobrazíni"}
+                  :verbal-noun    "izobražanie"}])
 
 (deftest prepare-verb-props-test
   "should produce a valid map of props used in conjugator fns."
