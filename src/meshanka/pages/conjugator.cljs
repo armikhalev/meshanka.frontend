@@ -227,6 +227,8 @@
       :but       {:pf "" :impf ""} ;; <-- no such forms
       :ša->si    {:impf  (str base "ni")
                   :pf    (str prefix impf-root "eni")}
+      :žaji->zi  {:impf  (str base "ni")
+                  :pf    (str prefix impf-root "eni")}
       (:ji :ja ) {:impf  (str base "ni")
                   :pf    (str pf-root "jeni")}
       :i         {:impf  (str impf-root "jeni")

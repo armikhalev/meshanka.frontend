@@ -384,7 +384,7 @@
                   :prs-act-prtc   "izobražači"
                   :prs-pass-prtc  "izobražami"
                   :past-act-prtc  {:impf "izobražavši" :pf "izobrazívši"}
-                  :past-pass-prtc {:impf "izobražani" :pf "izobrazíni"}
+                  :past-pass-prtc {:impf "izobražani" :pf "izobraženi"}
                   :verbal-noun    "izobražanie"}])
 
 (deftest prepare-verb-props-test
