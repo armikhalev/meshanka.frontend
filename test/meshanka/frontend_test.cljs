@@ -366,6 +366,7 @@
                   :past-pass-prtc {:impf "pametani" :pf "zapametáni"}
                   :verbal-noun    "pametanie"}
 
+                 ;; Reason for -ji ending is that there is also verb "po-derža" that doesn't have the same perfective form
                  {:verb      "izobražaji"
                   :prepared  {:base "izobraža"
                               :prefix nil
@@ -385,7 +386,29 @@
                   :prs-pass-prtc  "izobražami"
                   :past-act-prtc  {:impf "izobražavši" :pf "izobrazívši"}
                   :past-pass-prtc {:impf "izobražani" :pf "izobraženi"}
-                  :verbal-noun    "izobražanie"}])
+                  :verbal-noun    "izobražanie"}
+
+                 {:verb      "po-derža"
+                  :prepared  {:base "derža"
+                              :prefix "po"
+                              :verb "derža"
+                              :verb-type :a}
+                  :present    {:ja "deržam", :mi "deržamo", :ti "deržaš", :vi "deržate", :on "derža", :oni "deržajo"}
+                  :imper-pf   {:sg "poderžáj" :pl "poderžájte"}
+                  :imper-impf {:sg "deržáj" :pl "deržájte"}
+                  :fut-pf     {:ja "ja če poderžam", :mi "mi če poderžamo", :ti "ti če poderžaš", :vi "vi če poderžate", :on "on če poderža", :oni "oni če poderžajo"}
+                  :fut-impf   {:ja "bum deržat", :mi "bumo deržat", :ti "buš deržat", :vi "buste deržat", :on "bude deržat", :oni "bujo deržat"}
+                  :inf-pf     "poderžáti"
+                  :inf-impf   "deržat"
+                  :past-pf    "poderžá"
+                  :past-impf  "deržáva"
+
+                  :prs-act-prtc   "deržači"
+                  :prs-pass-prtc  "deržami"
+                  :past-act-prtc  {:impf "deržavši" :pf "poderžávši"}
+                  :past-pass-prtc {:impf "deržani" :pf "poderžáni"}
+                  :verbal-noun    "deržanie"}
+                 ])
 
 (deftest prepare-verb-props-test
   "should produce a valid map of props used in conjugator fns."
