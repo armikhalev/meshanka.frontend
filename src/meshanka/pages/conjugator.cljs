@@ -38,15 +38,36 @@
       :ha->še   (str prefix stem "šé")
       :ša->si   (str prefix stem "sí")
       :žaji->zi (str prefix stem "zí")
+      :nuva     (str prefix (.slice stem 0 -1) "ú")
       (str prefix root stressed-vowel))))
 
+(defn past-imperfective
+  [{:keys [base verb-type]}]
+  ;; if -va don't need to add it, otherwise just add -va
+  (let [root (if (= verb-type :va)(.slice base 0 -2)(.slice base 0 -1))
+        ending (if (= verb-type :va)(.slice root -1)(.slice base -1))
+        stressed-vowel (case ending
+                         "a" "á"
+                         "e" "é"
+                         "u" "ú"
+                         "o" "ó"
+                         "i" "í"
+                         ending)]
+    (case  verb-type
+      :but  "buva"
+      :va   (str (.slice root 0 -1) stressed-vowel "va")
+      :nuva (str (.slice root 0 -3) stressed-vowel "va")
+      (str root stressed-vowel "va"))))
+
 (defn imperfective-infinitive
-  [{:keys [verb-type base]}]
-  (case  verb-type
-    :iti    "iti"
-    :but    "but"
-    :mogči  "mogči"
-    (str base "t")))
+  [{:keys [verb-type base] :as props}]
+  (let [imperf-base (past-imperfective props)]
+    (case  verb-type
+      :iti    "iti"
+      :but    "but"
+      :mogči  "mogči"
+      :nuva   (str (.slice imperf-base 0 -3) "at")
+      (str base "t"))))
 
 (defn perfective-infinitive
   [{:keys [verb-type prefix base] :as props}]
@@ -88,23 +109,6 @@
         [:tr.person3
          [:td (:on verb)]
          [:td (:oni verb)]]]]]]))
-
-(defn past-imperfective
-  [{:keys [base verb-type]}]
-  ;; if -va don't need to add it, otherwise just add -va
-  (let [root (if (= verb-type :va)(.slice base 0 -2)(.slice base 0 -1))
-        ending (if (= verb-type :va)(.slice root -1)(.slice base -1))
-        stressed-vowel (case ending
-                         "a" "á"
-                         "e" "é"
-                         "u" "ú"
-                         "o" "ó"
-                         "i" "í"
-                         ending)]
-    (case  verb-type
-      :but "buva"
-      :va  (str (.slice root 0 -1) stressed-vowel "va")
-      (str root stressed-vowel "va"))))
 
 (defn future-perfective
   [{:keys [verb-type] :as props}]
@@ -210,7 +214,10 @@
 (defn past-active-participle
   [props]
   (case (:verb-type props)
-    :but {:pf "bevši" :impf "buvši"}
+    :but  {:pf "bevši"
+           :impf "buvši"}
+    :nuva {:pf (str (past-perfective props) "vši")
+           :impf (str (past-imperfective props) "vši")}
     ;; default
     {:pf   (str (past-perfective props) "vši")
      :impf (str (:base props) "vši")}))
@@ -233,6 +240,7 @@
                   :pf    (str pf-root "jeni")}
       :i         {:impf  (str impf-root "jeni")
                   :pf    (str pf-root "jeni")}
+      :nuva      {:pf (str prefix impf-root "áni") :impf (str (past-imperfective props) "ni")}
       :va        (cond
                    (not (or ends-on-a? ends-on-a-accented?))
                    {:impf  (str base "ni")
@@ -262,6 +270,7 @@
     "ide" :iti
     "bude" :but
     (condp #(gstr/endsWith %2 %1) verb
+      "nuvaje":nuva
       "može"  :mogči
       "ovaje" :ova
       "vaje"  :va
@@ -288,7 +297,7 @@
         splitted-by-dash     (str/split v3person-sg #"-" 2)
         [prefix verb]        (if (= (count splitted-by-dash) 2) splitted-by-dash [nil (first splitted-by-dash)])
         verb-type            (find-verb-type (gstr/trim verb))
-        exception-ending     (case verb-type :je "je" :ji "ji" :ova "je" :va "je" :žaji->zi "ji" nil)]
+        exception-ending     (case verb-type :je "je" :ji "ji" :nuva "je" :ova "je" :va "je" :žaji->zi "ji" nil)]
     {:base        (if exception-ending (first (str/split verb exception-ending)) verb)
      :prefix      prefix
      :verb        verb
