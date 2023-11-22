@@ -263,29 +263,52 @@
 
 ;; Auxiliary ;;
 
+(def verb-types
+  "A set that contains all the verb types. It should be updated when types are added or removed."
+  {1 :iti
+   2 :but
+   3 :nuva
+   4 :mogči
+   5 :ova
+   6 :va
+   7 :e
+   8 :i
+   9 :a
+   10 :je
+   11 :ji
+   12 :ja
+   13 :ga->že
+   14 :ka->če
+   15 :ha->še
+   16 :ša->si
+   17 :žaji->zi})
+
+(def verb-types-set (set (vals verb-types)))
+
 (defn find-verb-type
   "Conditionally applies Meshanka rules to determine given verb's type."
   [verb]
-  (case verb
-    "ide" :iti
-    "bude" :but
-    (condp #(gstr/endsWith %2 %1) verb
-      "nuvaje":nuva
-      "može"  :mogči
-      "ovaje" :ova
-      "vaje"  :va
-      "žaji"  :žaji->zi
-      "ji"    :ji
-      "je"    :je
-      "ja"    :ja
-      "ga"    :ga->že
-      "ka"    :ka->če
-      "ha"    :ha->še
-      "ša"    :ša->si
-      "e"     :e
-      "i"     :i
-      "a"     :a
-      nil)))
+  (let [found-type (case verb
+                     "ide" :iti
+                     "bude" :but
+                     (condp #(gstr/endsWith %2 %1) verb
+                       "nuvaje":nuva
+                       "može"  :mogči
+                       "ovaje" :ova
+                       "vaje"  :va
+                       "žaji"  :žaji->zi
+                       "ji"    :ji
+                       "je"    :je
+                       "ja"    :ja
+                       "ga"    :ga->že
+                       "ka"    :ka->če
+                       "ha"    :ha->še
+                       "ša"    :ša->si
+                       "e"     :e
+                       "i"     :i
+                       "a"     :a
+                       nil))]
+    (if (verb-types-set found-type) found-type "...")))
 
 (defn input-field [v]
   [:div#input-conjugator
@@ -313,11 +336,17 @@
          [:h2 "Spregalnik / Conjugator"]
          [input-field !v]
          [:hr]
+         [:div
+          [:div.tile.is-ancestor
+           [:div.box
+            [:span [:span "All verb types: "]
+             (for [[i v] verb-types]
+               [:span.tag {:key (str "verb-type--" i v)} (str i ": " (name v))])]]]]
          (when (not (str/blank? @!v))
            [:div
             [:div.tile.is-ancestor
              [:div.box
-              [:span [:span "Verb type: "] [:span.tag (:verb-type  props)]]]
+              [:span [:span "Verb type: "] [:span.tag (-> props :verb-type  name)]]]
              [:div.box
               [:span [:span "Prefix: "] [:span.tag (:prefix  props)]]]]
             [:div.tile.is-ancestor
