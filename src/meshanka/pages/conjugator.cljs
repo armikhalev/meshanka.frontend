@@ -320,8 +320,8 @@
         splitted-by-dash     (str/split v3person-sg #"-" 2)
         [prefix verb]        (if (= (count splitted-by-dash) 2) splitted-by-dash [nil (first splitted-by-dash)])
         verb-type            (find-verb-type (gstr/trim verb))
-        exception-ending     (case verb-type :je "je" :ji "ji" :nuva "je" :ova "je" :va "je" :žaji->zi "ji" nil)]
-    {:base        (if exception-ending (first (str/split verb exception-ending)) verb)
+        exception-ending     (case verb-type :je "je" :ji "ji" :nuva "je" :ova "je" :va "je" :žaji->zi "ji" false)]
+    {:base        (if (and exception-ending (not= (count verb) 2)) (first (str/split verb exception-ending)) verb)
      :prefix      prefix
      :verb        verb
      :verb-type   verb-type}))
